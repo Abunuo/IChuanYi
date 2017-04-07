@@ -1,0 +1,48 @@
+$BaseColor:#ccc;
+
+.m-container{
+    font-size: 100px;
+    font-family: '微软雅黑';
+    width: 100%;
+    height: 100%;
+    @include flexbox();
+    @include flex-direction(column);
+    background: #fff;
+    .header{
+        width: 100%;
+        height: 44px;
+        @include flexbox();
+        @include justify-content(space-between);
+        @include align-items(center);
+        @include border(0 0 1px 0,#eee);
+        font-size: .15em;
+        span{
+            display: block;
+            width: 44px;
+            height: 44px;
+            margin: 0 10px;
+        }
+        .search{
+            background: url('/images/CgAAGley4s8EAAAAAAAAAPi9VwI638.png')no-repeat center center;
+            background-size: 30px,30px;
+        }
+        nav{
+            a{
+                color: #333;
+                font-weight: bold;
+                padding: 10px 0;
+            }
+            a:nth-of-type(1){
+                margin-right: 20px;
+            }
+            .active{
+                color: rgb(122, 38, 139);
+                @include border(0 0 2px 0,rgb(122, 38, 139));
+            }
+        }
+        .car{
+            background: url('/images/my-shopping-cart-icon_d3a35b8.png')no-repeat center center;
+            background-size: 30px,30px;
+        }
+    }
+}

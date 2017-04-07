@@ -1,0 +1,221 @@
+body{
+    background: #fff;
+    font-family: "微软雅黑";
+}
+b{
+    font-weight: normal;
+}
+.my-container {
+    background: #f6f6f6;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    header{
+        background: #fff;
+        height: .44rem;
+        border-bottom: solid 1px #ddd;
+        span{
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            line-height: .44rem;
+            font-size: .18rem;
+        }
+    }
+    #index-scroll{
+        @include flex(1);
+        width: 100%;
+        overflow: hidden;
+    }
+    #scroll-box{
+        @include flexbox();
+        flex-wrap: wrap;
+        width: 100%;
+        height: auto;
+    }
+    .user{
+        background: #fff;
+        margin-top: .05rem;
+        width: 100%;
+        display: flex;
+        img{
+            width: .80rem;
+            height: .80rem;
+            border-radius: 50%;
+            padding: .12rem;
+        }
+        ul{
+            flex: 4;
+            li{
+                font-size: .14rem;
+                display: flex;
+                color: #333 ;
+                width: 100%;
+                height: .40rem;
+                line-height: .40rem;
+                border-bottom: 1px #eee solid;
+                align-items: center;
+                .login{
+                    color: #f4f;
+                    font-size: .12rem;
+                    border: solid 1px #f4f;
+                    text-align: center;
+                    border-radius: .16rem;
+                    padding: 0 .05rem;
+                    line-height: .20rem;
+                    margin-left: .10rem;
+                }
+                i{
+                    font-size: .12rem;
+                    color: #333;
+                    flex: 1;
+                    border-right: dotted 1px #ccc;
+                    height: .20rem;
+                    line-height: .20rem;
+                    span{
+                        float: right;
+                        padding-right: .10rem;
+                        color: #666;
+                    }
+                }
+                b{
+                    font-size: .12rem;
+                    color: #333;
+                    flex: 1.1;
+                    padding-left: .10rem;
+                    span{
+                        float: right;
+                        padding-right: .10rem;
+                        color: #666;
+                    }
+                }
+            }
+        }
+    }
+    .others{
+        padding-left: .14rem;
+        background: #fff;
+        margin-top: .05rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        li{
+            width: 100%;
+            height: .40rem;
+            line-height: .40rem;
+            display: flex;
+            border-bottom: 1px #eee solid;
+            background: url("/images/arrow_discovery_right_red.png") no-repeat 95% center;
+            background-size: 8px;
+        }
+    }
+    .tabs{
+        background: #fff;
+        margin-top: .05rem;
+        width: 100%;
+        padding: .10rem 0;
+        ul{
+            display: flex;
+            width: 100%;
+            li{
+                flex: 1;
+                text-align: center;
+                padding-top: .34rem;
+                font-size: .12rem;
+            }
+            li:nth-child(1){
+                background: url('/images/my_page_collection.png') top center no-repeat;
+                background-size: 26px;
+            }
+            li:nth-child(2){
+                background: url('/images/my_page_coupons.png') top center no-repeat;
+                background-size: 26px;
+            }
+            li:nth-child(3){
+                background: url('/images/my_page_recommend.png') top center no-repeat;
+                background-size: 26px;
+            }
+            li:nth-child(4){
+                background: url('/images/my_page_checkin.png') top center no-repeat;
+                background-size: 26px;
+            }
+        }
+    }
+    .order{
+        background: #fff;
+        margin-top: .05rem;
+        width: 100%;
+        p{
+            padding-left: .14rem;
+            height: .40rem;
+            line-height: .40rem;
+            @include border(0 0 0.5px 0,#999,solid);
+            background: url("/images/arrow_discovery_right_red.png") no-repeat 95% center;
+            background-size: .08rem;
+        }
+        ul{
+            display: flex;
+            padding: .10rem .05rem .05rem;
+            li{
+                flex: 1;
+                text-align: center;
+                padding-top: .34rem;
+                font-size: .12rem;
+                color: #666;
+            }
+            li:nth-child(1){
+                background: url('/images/order_to_pay.png') top center no-repeat;
+                background-size: 22px;
+            }
+            li:nth-child(2){
+                background: url('/images/order_to_send.png') top center no-repeat;
+                background-size: 22px;
+            }
+            li:nth-child(3){
+                background: url('/images/order_to_receive.png') top center no-repeat;
+                background-size: 22px;
+            }
+            li:nth-child(4){
+                background: url('/images/order_to_evaluate.png') top center no-repeat;
+                background-size: 22px;
+            }
+            li:nth-child(5){
+                background: url('/images/order_to_cancle.png') top center no-repeat;
+                background-size: 22px;
+            }
+        }
+    }
+    .kf{
+        display: flex;
+        justify-content: space-between;
+        padding: 0 10% 0 0;
+        span{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            font-size: .08rem;
+            text-align: center;
+            b{
+                line-height: .20rem;
+                flex: 1;
+                color: #f4f;
+            }
+            i{
+                line-height: .20rem;
+                flex: 1;
+                color: #999;
+            }
+        }
+
+    }
+    .bd{
+        display: flex;
+        justify-content: space-between;
+        padding: 0 10% 0 0;
+        span{
+            font-size: .12rem;
+            color: #888;
+        }
+    }
+}

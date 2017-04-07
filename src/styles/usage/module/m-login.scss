@@ -1,0 +1,247 @@
+input{
+    border: 0;
+    background: #f5f5f5;
+    width: 70%;
+    height: .36rem;
+    font-size: .12rem;
+    padding-left: .05rem;
+}
+::-webkit-input-placeholder {
+    color: #ddd;
+}
+.login-container,.register-container,.find-container{
+    header{
+        background: #fff;
+        height: .44rem;
+        border-bottom: solid 1px #ddd;
+        .back{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: .44rem;
+            height: .44rem;
+            background: url(/images/back_red.png) no-repeat center center;
+            background-size: .20rem;
+        }
+        span{
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            font-size: .18rem;
+            line-height: .44rem;
+        }
+    }
+    #main{
+        padding: .18rem;
+
+        .password{
+            padding-top: .14rem;
+            display: flex;
+            align-items: center;
+            span{
+                background: #f5f5f5 url(/images/login_pass_icon.png) no-repeat center center;
+                background-size: .14rem;
+                width: .40rem;
+                height: .36rem;
+                border-right: dashed .01rem #eee;
+            }
+            input{
+                flex: 1;
+            }
+            i{
+                background: #f5f5f5;
+                height: .36rem;
+                line-height: .36rem;
+                font-size: .12rem;
+                text-decoration: underline;
+                color: #d387e8;
+                padding-right: .05rem;
+            }
+        }
+        button{
+            width: 100%;
+            border: 0;
+            height: .36rem;
+            line-height: .36rem;
+            color: #fff;
+        }
+    }
+    #share{
+        margin-top: 50%;
+        position: relative;
+        padding: .18rem;
+        .border{
+            border-top: dashed 1px #ccc;
+            height: 1px;
+            width: 100%;
+        }
+        p{
+            color: #ccc;
+            font-size: 12px;
+            background: #fff;
+            position: absolute;
+            top: 8px;
+            left: 30%;
+        }
+        .others{
+            padding: 30px 0px;
+            display: flex;
+            .sina{
+                flex: 1;
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+                background: url(/images/login_sina_btn.png) no-repeat center center;
+                background-size: 40px;
+            }
+            .qq{
+                flex: 1;
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+                background: url(/images/login_qq_btn.png) no-repeat center center;
+                background-size: 30px;
+            }
+            .wechat{
+                flex: 1;
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+                background: url(/images/login_weixin_btn.png) no-repeat center center;
+                background-size: 40px;
+            }
+        }
+
+    }
+}
+.login-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    #main{
+        .user{
+            padding-top: .20rem;
+            display: flex;
+            align-items: center;
+            span{
+                background: #f5f5f5 url(/images/login_user_icon.png) no-repeat center center;
+                background-size: .14rem;
+                width: .40rem;
+                height: .36rem;
+                border-right: dashed .01rem #eee;
+            }
+            input{
+                flex: 1;
+            }
+        }
+        .login{
+            background: #7566d8;
+            margin-top: .40rem;
+        }
+        .register{
+            background: #c79af2;
+            margin-top: .14rem;
+        }
+    }
+}
+
+//register-container
+
+.register-container,.find-container{
+    #main{
+        .phone{
+            padding-top: .20rem;
+            display: flex;
+            align-items: center;
+            span{
+                background: #f5f5f5 url(/images/reg_phone_icon.png) no-repeat center center;
+                background-size: .14rem;
+                width: .40rem;
+                height: .36rem;
+                border-right: dashed .01rem #eee;
+            }
+            input{
+                flex: 1;
+            }
+        }
+        .code{
+            padding-top: .14rem;
+            display: flex;
+            align-items: center;
+            span{
+                background: #f5f5f5 url(/images/reg_email_icon.png) no-repeat center center;
+                background-size: .14rem;
+                width: .40rem;
+                height: .36rem;
+                border-right: dashed .01rem #eee;
+            }
+            input{
+                flex: 1;
+            }
+            i{
+                background: #c79af2;
+                height: .36rem;
+                line-height: .36rem;
+                font-size: .12rem;
+                color: #fff;
+                padding: 0 .1rem;
+            }
+        }
+        .yxtk{
+            padding-top: .30rem;
+            display: inline-block;
+            color: #d387e8;
+            font-size: .12rem;
+            text-decoration: underline;
+            width: 100%;
+            text-align: right;
+        }
+        .submit{
+            background: #c79af2;
+            margin-top: .10rem;
+        }
+    }
+
+}
+.find-container{
+
+    .reset{
+        background: #c79af2;
+        margin-top: .40rem;
+    }
+}
+.register-container,.login-container,.find-container{
+    .bounce-transition {
+      display: inline-block;
+    }
+    .bounce-enter{
+      animation: bounce-in 5s;
+    }
+    @keyframes bounce-in {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+    .ts{
+        display: inline-block;
+        width: 90%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 5px;
+        background: #c79af2;
+        color: #fff;
+        font-size: .12rem;
+    }
+}

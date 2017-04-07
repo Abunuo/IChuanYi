@@ -1,0 +1,31 @@
+.m-main-attentive{
+    height: 100%;
+    position: relative;
+    .main-notice{
+        @include flexbox();
+        @include flex-direction(column) ;
+        @include align-items(stretch);
+        @include justify-content(center);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        @include transform(translate(-50%,-70%));
+        font-size: .14rem;
+        .notice{
+            width: 280px;
+            line-height: 20px;
+            color: #666;
+            margin-bottom: 100px;
+        }
+        .toGo{
+            width: 180px;
+            height: 40px;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+            background: rgb(193, 116, 192);
+            border: 0;
+            margin: 0 auto;
+        }
+    }
+}
