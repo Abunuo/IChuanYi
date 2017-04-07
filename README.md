@@ -1,8 +1,10 @@
 # IChuanYi
 穿衣助手 WebApp（VueJs demo）
 
-> 项目简介： 穿衣助手的 WebApp 版设计
-> 应用技术： VueJS、VueX、scss、ES6、Mock、vue-router、vue-resource、Webpack等 
+> ### 项目简介： 
+    穿衣助手的 WebApp 版设计
+> ### 应用技术： 
+    VueJS、VueX、scss、ES6、Mock、vue-router、vue-resource、Webpack等 
 
 1. 下载压缩包，解压
 2. 安装依赖包，运行项目
