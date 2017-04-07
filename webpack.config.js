@@ -20,7 +20,7 @@ module.exports = {
   // devserver配置
   devServer: {
     contentBase: __dirname + '/prd',
-    port: 8000,
+    port: 2222,
     inline: true,
         proxy: {
           '/rest/*': {
