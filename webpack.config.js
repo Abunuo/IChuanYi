@@ -22,15 +22,16 @@ module.exports = {
     contentBase: __dirname + '/prd',
     port: 2222,
     inline: true,
-        proxy: {
-          '/rest/*': {
-            target: 'http://localhost:8888',
-            secure: true,
-            pathRewrite: {
-              '^/rest': ''
-            }
-          }
+    proxy: {
+      '/rest/*': {
+        target: 'http://localhost:8888',
+        secure: true,
+        pathRewrite: {
+          '^/rest': ''
         }
+      }
+    },
+    host:'0.0.0.0'
   },
 
   // 配置模块

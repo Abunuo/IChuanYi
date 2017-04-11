@@ -1,7 +1,7 @@
 <template>
     <div class="search_box">
       <header>
-          <i v-link="{path:'/shopping'}"></i>
+          <i onclick="window.history.go(-1)"></i>
           <div class="search">
               <input type="text" v-model.trim="msg" />
           </div>
@@ -31,7 +31,7 @@
             <span>努力刷新中...</span>
           </div>
           <ul>
-            <li v-for='list in productList'>
+            <li v-for='list in productList' v-link='"/productDetail/" + list.name'>
               <div class='imgbox'>
                 <img v-bind:src='list.imgsrc' />
               </div>

@@ -7,7 +7,7 @@ module.exports = {
             "height":435,
             "name":"naning9",
             "detail":"最美的搭配，最潮流的样式~~",
-            "labels":['韩系', '出行', '风衣', '休闲', '牛仔裤', '春季美鞋']
+            "labels":['韩系', '出行', '牛仔裤', '春季美鞋']
         },
         {
             "url":"/images/CgAAGlgHLqIEAAAAAAAAANcFz7I503.jpg",
@@ -16,7 +16,7 @@ module.exports = {
             "height":435,
             "name":"SennosZhou",
             "detail":"贵人的感觉，就是这个 feel ",
-            "labels":['韩系', '出行', '休闲', '风衣', '牛仔裤', '春季美鞋']
+            "labels":['韩系', '出行', '休闲', '风衣', '春季美鞋']
         },
         {
             "url":"/images/CgAAGlgHPT4EAAAAAAAAAD8nSgg769.jpg",
@@ -34,7 +34,7 @@ module.exports = {
             "height":435,
             "name":"春娇与志明情侣店",
             "detail":"最美的搭配，最潮流的样式~~",
-            "labels":['韩系', '出行', '风衣', '休闲', '牛仔裤', '春季美鞋']
+            "labels":['韩系', '出行', '风衣', '休闲', '牛仔裤']
         },
         {
             "url":"/images/CgAAGlgHgFMEAAAAAAAAAAUuE98500.jpg",
@@ -52,7 +52,7 @@ module.exports = {
             "height":435,
             "name":"薇薇weiwei",
             "detail":"最美的搭配，最潮流的样式~~",
-            "labels":['韩系', '出行', '风衣', '休闲', '牛仔裤', '春季美鞋']
+            "labels":['出行', '风衣', '休闲', '牛仔裤', '春季美鞋']
         },
         {
             "url":"/images/CgAANVgEWLQEAAAAAAAAAFt7gDI932.jpg",
@@ -70,7 +70,7 @@ module.exports = {
             "height":435,
             "name":"zomio独家定制",
             "detail":"最美的搭配，最潮流的样式~~",
-            "labels":['休闲', '韩系', '出行', '风衣', '牛仔裤', '春季美鞋']
+            "labels":['休闲', '出行', '风衣', '牛仔裤', '春季美鞋']
         },
         {
             "url":"/images/CgAANVgG-1oEAAAAAAAAAMCyUqU104.jpg",
@@ -79,7 +79,7 @@ module.exports = {
             "height":435,
             "name":"ZZ大小姐",
             "detail":"最美的搭配，最潮流的样式~~",
-            "labels":['休闲', '韩系', '出行', '风衣', '牛仔裤', '春季美鞋']
+            "labels":['休闲', '韩系', '风衣', '牛仔裤', '春季美鞋']
         },
         {
             "url":"/images/CgAANVgGBTkEAAAAAAAAAJyH2I0935.png",
@@ -88,7 +88,7 @@ module.exports = {
             "height":435,
             "name":"西西小可",
             "detail":"最美的搭配，最潮流的样式~~",
-            "labels":['韩系', '出行', '休闲', '风衣', '牛仔裤', '春季美鞋']
+            "labels":['韩系', '出行', '休闲', '牛仔裤', '春季美鞋']
         },
         {
             "url":"/images/CgAANVgII0MEAAAAAAAAADkYlcg042.jpg",

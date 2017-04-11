@@ -4,22 +4,22 @@
   @include flexbox();
   @include flex-direction(column);
   .header{
-      height: .44rem;
+      height: .6rem;
       .back{
           position: absolute;
           left: 0;
           top: 0;
-          width: .44rem;
-          height: .44rem;
+          width: .6rem;
+          height: .6rem;
           background: url('/images/back_red.png') no-repeat center center;
-          background-size: .25rem;
+          background-size: .3rem;
       }
       span{
           display: inline-block;
           width: 100%;
           text-align: center;
           font-size: .18rem;
-          line-height: .44rem;
+          line-height: .6rem;
       }
   }
   #detail-scroll {
@@ -54,19 +54,68 @@
 
         }
         .shop{
-          height: 2rem;
-          margin-top: .2rem;
-          @include flex-direction(row);
+          padding: .1rem 0;
+          @include flexbox();
+          @include justify-content(space-between);
           @include align-items(center);
           img{
-              margin: 0 10px 10px;
-              width: 25px;
-              height: 25px;
+              margin: 0 .2rem 0 0;
+              width: .4rem;
+              height: .4rem;
               border-radius: 50%;
           }
           i{
-              font-size: .12em;
+              font-size: .16rem;
               color: #666;
+          }
+          .attention {
+            height: .3rem;
+            line-height: .2rem;
+            padding: .05rem .1rem;
+            color: #d075ea;
+            @include border(1px, #d075ea, solid, .2rem);
+          }
+        }
+        .recommend {
+          .introduce {
+            height: .2rem;
+            line-height: .2rem;
+            color: #777;
+          }
+          .recommendList {
+              width: 100%;
+              height: auto;
+              @include flexbox();
+              @include flex-wrap(wrap);
+              @include justify-content(space-between);
+
+              .recommend {
+                  width: 48%;
+                  height: auto;
+                  @include flexbox();
+                  @include flex-direction(column);
+                  padding: 0.05rem 0;
+
+                  .imgbox {
+                      width: 100%;
+                      height: auto;
+
+                      img {
+                          width: 100%;
+                      }
+                  }
+
+                  h4 {
+                      font-size: 0.12rem;
+                      line-height: 0.25rem;
+                      font-weight: normal;
+                  }
+
+                  span {
+                      font-size: 0.14rem;
+                      font-weight: bold;
+                  }
+              }
           }
         }
     }

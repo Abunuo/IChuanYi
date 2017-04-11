@@ -20,10 +20,29 @@
 
         <!-- 店铺信息 -->
         <section class="shop">
-          <img v-bind:src="productHead"></img>
-          <i>{{productName}}</i>
+          <div>
+            <img v-bind:src="productHead"></img>
+            <i>{{productName}}</i>
+          </div>
+          <span class="attention" v-show="show.attShow" @click="attClick">+ 关注</span>
+          <span class="attention" v-show="!show.attShow" @click="attClick">已关注</span>
         </section>
 
+        <!-- 店铺推荐 -->
+        <section class="recommend">
+          <p class="introduce">
+            “{{productDetail}}”
+          </p>
+          <ul class="recommendList">
+            <li class='recommend' v-for='item in recommendList' v-link='"/productDetail/" + item.name'>
+              <div class='imgbox'>
+                <img v-bind:src='item.imgsrc' />
+              </div>
+              <h4>{{item.name}}</h4>
+              <span>￥{{item.price}}</span>
+            </li>
+          </ul>
+        </section>
       </div>
     </section>
   </div>
@@ -39,8 +58,17 @@
           productName: '',
           productHead: '',
           productDetail: '',
-          productLabels: []
+          productLabels: [],
+          recommendList: [],
+          show: {
+            attShow: true,
+          }
         }
+      },
+      methods: {
+        attClick() {
+          this.show.attShow = !this.show.attShow;
+        },
       },
       ready() {
         var that = this;
@@ -51,24 +79,35 @@
             bounce:false,
             mouseWheel: true,
         });
-        this.$http.get('/rest/list')
-            .then((res) => {
-                let data = res.data.data;
-                data.forEach(function(item) {
-                  if (item.name.indexOf(id) != -1) {
-                      that.productUrl = item.url;
-                      that.productName = item.name;
-                      that.productHead = item.head;
-                      that.productDetail = item.detail;
-                      that.productLabels = item.labels;
-                      Vue.nextTick(function() {
-                          commonUtil.isAllLoaded('#detail-scroll', function() {
-                              detailScroll.refresh();
-                          });
-                      });
-                  }
-                })
+
+        let p1 = this.$http.get('/rest/list'),
+            p2 = this.$http.get('/rest/products');
+        Promise.all([p1, p2]).then((responses) => {
+          responses[0].data.data.forEach(function(item) {
+            if (item.name.indexOf(id) != -1) {
+                that.productUrl = item.url;
+                that.productName = item.name;
+                that.productHead = item.head;
+                that.productDetail = item.detail;
+                that.productLabels = item.labels;
+                return;
+            }
+          });
+          responses[1].data.forEach((item) => {
+            if(that.recommendList.length < 4){
+              that.recommendList.push(item);
+            } else {
+              return;
+            }
+          });
+
+          //刷新 Iscroll 长度
+          Vue.nextTick(function() {
+            commonUtil.isAllLoaded('#detail-scroll', function() {
+              detailScroll.refresh();
             });
+          });
+        });
       }
     }
 </script>

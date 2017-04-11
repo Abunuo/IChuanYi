@@ -96,20 +96,22 @@
 	
 	var _detail2 = _interopRequireDefault(_detail);
 	
-	var _store = __webpack_require__(72);
+	var _productDetail = __webpack_require__(72);
+	
+	var _productDetail2 = _interopRequireDefault(_productDetail);
+	
+	var _store = __webpack_require__(75);
 	
 	var _store2 = _interopRequireDefault(_store);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	// views
 	var App = Vue.extend({
 	  store: _store2.default
 	});
 	
 	// 在根组件加入 store，让它的子组件和 store 连接
-	
-	
-	// views
 	
 	
 	var router = new VueRouter();
@@ -156,6 +158,9 @@
 	  },
 	  '/detail/:id': {
 	    component: _detail2.default
+	  },
+	  '/productDetail/:id': {
+	    component: _productDetail2.default
 	  }
 	});
 	
@@ -2986,7 +2991,7 @@
 	//             <span>努力刷新中...</span>
 	//           </div>
 	//           <ul>
-	//             <li v-for='list in productList'>
+	//             <li v-for='list in productList' v-link="{name: 'productDetail', params: {id: list.name}}">
 	//               <div class='imgbox'>
 	//                 <img v-bind:src='list.imgsrc' />
 	//               </div>
@@ -3264,7 +3269,7 @@
 /* 68 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"search_box\">\n  <header>\n      <i v-link=\"{path:'/shopping'}\"></i>\n      <div class=\"search\">\n          <input type=\"text\" v-model.trim=\"msg\" />\n      </div>\n      <button v-on:click='searchContent'>搜索</button>\n  </header>\n  <nav class='menu'>\n    <ul>\n      <li class='liactive' v-on:click='moren'>默认</li>\n      <li v-on:click='saleCount' >销量</li>\n      <li v-on:click='price' >价格<i></i><em></em></li>\n      <li v-on:click='shuaixuan' >筛选<b></b></li>\n    </ul>\n  </nav>\n  <div v-if='selected' class='priceselect'>\n    <span>价格区间(元)</span>\n    <div>\n      <input type=\"text\" number v-model='startprice' />\n      <span>--</span>\n      <input type=\"text\" number  v-model='endprice' />\n    </div>\n    <button v-on:click='selectprice'>确定</button>\n  </div>\n  <section id='search_scroll-view'>\n    <div class=\"conbox\">\n      <div v-show='topshow' class=\"head\">\n        <img v-bind:src='imgArrow' />\n        <span>努力刷新中...</span>\n      </div>\n      <ul>\n        <li v-for='list in productList'>\n          <div class='imgbox'>\n            <img v-bind:src='list.imgsrc' />\n          </div>\n          <h4>{{list.name}}</h4>\n          <span>￥{{list.price}}</span>\n        </li>\n      </ul>\n      <div v-show='bottomshow' class=\"foot\">\n        <img v-bind:src='imgArrow' />\n        <span>努力加载中...</span>\n      </div>\n    </div>\n  </section>\n</div>\n";
+	module.exports = "\n<div class=\"search_box\">\n  <header>\n      <i v-link=\"{path:'/shopping'}\"></i>\n      <div class=\"search\">\n          <input type=\"text\" v-model.trim=\"msg\" />\n      </div>\n      <button v-on:click='searchContent'>搜索</button>\n  </header>\n  <nav class='menu'>\n    <ul>\n      <li class='liactive' v-on:click='moren'>默认</li>\n      <li v-on:click='saleCount' >销量</li>\n      <li v-on:click='price' >价格<i></i><em></em></li>\n      <li v-on:click='shuaixuan' >筛选<b></b></li>\n    </ul>\n  </nav>\n  <div v-if='selected' class='priceselect'>\n    <span>价格区间(元)</span>\n    <div>\n      <input type=\"text\" number v-model='startprice' />\n      <span>--</span>\n      <input type=\"text\" number  v-model='endprice' />\n    </div>\n    <button v-on:click='selectprice'>确定</button>\n  </div>\n  <section id='search_scroll-view'>\n    <div class=\"conbox\">\n      <div v-show='topshow' class=\"head\">\n        <img v-bind:src='imgArrow' />\n        <span>努力刷新中...</span>\n      </div>\n      <ul>\n        <li v-for='list in productList' v-link=\"{name: 'productDetail', params: {id: list.name}}\">\n          <div class='imgbox'>\n            <img v-bind:src='list.imgsrc' />\n          </div>\n          <h4>{{list.name}}</h4>\n          <span>￥{{list.price}}</span>\n        </li>\n      </ul>\n      <div v-show='bottomshow' class=\"foot\">\n        <img v-bind:src='imgArrow' />\n        <span>努力加载中...</span>\n      </div>\n    </div>\n  </section>\n</div>\n";
 
 /***/ },
 /* 69 */
@@ -3301,14 +3306,21 @@
 
 /***/ },
 /* 70 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	// <template>
+	
+	var _commonUtil = __webpack_require__(28);
+	
+	var _commonUtil2 = _interopRequireDefault(_commonUtil);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var detailScroll; // <template>
 	//   <div class="detail_container">
 	//     <header class="header">
 	//       <i class="back" onclick="window.history.go(-1)"></i>
@@ -3330,10 +3342,28 @@
 	//
 	//         <!-- 店铺信息 -->
 	//         <section class="shop">
-	//           <img v-bind:src="productHead"></img>
-	//           <i>{{productName}}</i>
+	//           <div>
+	//             <img v-bind:src="productHead"></img>
+	//             <i>{{productName}}</i>
+	//           </div>
+	//           <span class="attention">+ 加关注</span>
 	//         </section>
 	//
+	//         <!-- 店铺推荐 -->
+	//         <section class="recommend">
+	//           <p class="introduce">
+	//             “{{productDetail}}”
+	//           </p>
+	//           <ul class="recommendList">
+	//             <li class='recommend' v-for='item in recommendList'>
+	//               <div class='imgbox'>
+	//                 <img v-bind:src='item.imgsrc' />
+	//               </div>
+	//               <h4>{{item.name}}</h4>
+	//               <span>￥{{item.price}}</span>
+	//             </li>
+	//           </ul>
+	//         </section>
 	//       </div>
 	//     </section>
 	//   </div>
@@ -3347,28 +3377,46 @@
 	      productName: '',
 	      productHead: '',
 	      productDetail: '',
-	      productLabels: []
+	      productLabels: [],
+	      recommendList: []
 	    };
 	  },
 	  ready: function ready() {
 	    var that = this;
 	    var id = this.$route.params.id;
-	    var detailScroll = new IScroll('#detail-scroll', {
+	    detailScroll = new IScroll('#detail-scroll', {
 	      probeType: 3,
 	      click: true,
 	      bounce: false,
 	      mouseWheel: true
 	    });
-	    this.$http.get('/rest/list').then(function (res) {
-	      var data = res.data.data;
-	      data.forEach(function (item) {
+	
+	    var p1 = this.$http.get('/rest/list'),
+	        p2 = this.$http.get('/rest/products');
+	    Promise.all([p1, p2]).then(function (responses) {
+	      responses[0].data.data.forEach(function (item) {
 	        if (item.name.indexOf(id) != -1) {
 	          that.productUrl = item.url;
 	          that.productName = item.name;
 	          that.productHead = item.head;
 	          that.productDetail = item.detail;
 	          that.productLabels = item.labels;
+	          return;
 	        }
+	      });
+	      responses[1].data.forEach(function (item) {
+	        if (that.recommendList.length < 4) {
+	          that.recommendList.push(item);
+	        } else {
+	          return;
+	        }
+	      });
+	
+	      //刷新 Iscroll 长度
+	      Vue.nextTick(function () {
+	        _commonUtil2.default.isAllLoaded('#detail-scroll', function () {
+	          detailScroll.refresh();
+	        });
 	      });
 	    });
 	  }
@@ -3381,10 +3429,137 @@
 /* 71 */
 /***/ function(module, exports) {
 
-	module.exports = "\n<div class=\"detail_container\">\n  <header class=\"header\">\n    <i class=\"back\" onclick=\"window.history.go(-1)\"></i>\n    <span class=\"title\">搭配详情</span>\n  </header>\n  <section id=\"detail-scroll\">\n    <div class=\"detail-box\">\n      <!-- 搭配图例 -->\n      <section class=\"img\">\n        <img v-bind:src=\"productUrl\" />\n      </section>\n\n      <!-- 标签 -->\n      <nav class=\"labels\">\n        <li class=\"label\" v-for='item in productLabels'>\n          {{item}}\n        </li>\n      </nav>\n\n      <!-- 店铺信息 -->\n      <section class=\"shop\">\n        <img v-bind:src=\"productHead\"></img>\n        <i>{{productName}}</i>\n      </section>\n\n    </div>\n  </section>\n</div>\n";
+	module.exports = "\n<div class=\"detail_container\">\n  <header class=\"header\">\n    <i class=\"back\" onclick=\"window.history.go(-1)\"></i>\n    <span class=\"title\">搭配详情</span>\n  </header>\n  <section id=\"detail-scroll\">\n    <div class=\"detail-box\">\n      <!-- 搭配图例 -->\n      <section class=\"img\">\n        <img v-bind:src=\"productUrl\" />\n      </section>\n\n      <!-- 标签 -->\n      <nav class=\"labels\">\n        <li class=\"label\" v-for='item in productLabels'>\n          {{item}}\n        </li>\n      </nav>\n\n      <!-- 店铺信息 -->\n      <section class=\"shop\">\n        <div>\n          <img v-bind:src=\"productHead\"></img>\n          <i>{{productName}}</i>\n        </div>\n        <span class=\"attention\">+ 加关注</span>\n      </section>\n\n      <!-- 店铺推荐 -->\n      <section class=\"recommend\">\n        <p class=\"introduce\">\n          “{{productDetail}}”\n        </p>\n        <ul class=\"recommendList\">\n          <li class='recommend' v-for='item in recommendList'>\n            <div class='imgbox'>\n              <img v-bind:src='item.imgsrc' />\n            </div>\n            <h4>{{item.name}}</h4>\n            <span>￥{{item.price}}</span>\n          </li>\n        </ul>\n      </section>\n    </div>\n  </section>\n</div>\n";
 
 /***/ },
 /* 72 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __vue_script__, __vue_template__
+	var __vue_styles__ = {}
+	__vue_script__ = __webpack_require__(73)
+	if (Object.keys(__vue_script__).some(function (key) { return key !== "default" && key !== "__esModule" })) {
+	  console.warn("[vue-loader] src/scripts/components/productDetail.vue: named exports in *.vue files are ignored.")}
+	__vue_template__ = __webpack_require__(74)
+	module.exports = __vue_script__ || {}
+	if (module.exports.__esModule) module.exports = module.exports.default
+	var __vue_options__ = typeof module.exports === "function" ? (module.exports.options || (module.exports.options = {})) : module.exports
+	if (__vue_template__) {
+	__vue_options__.template = __vue_template__
+	}
+	if (!__vue_options__.computed) __vue_options__.computed = {}
+	Object.keys(__vue_styles__).forEach(function (key) {
+	var module = __vue_styles__[key]
+	__vue_options__.computed[key] = function () { return module }
+	})
+	if (false) {(function () {  module.hot.accept()
+	  var hotAPI = require("vue-hot-reload-api")
+	  hotAPI.install(require("vue"), false)
+	  if (!hotAPI.compatible) return
+	  var id = "_v-cb870e24/productDetail.vue"
+	  if (!module.hot.data) {
+	    hotAPI.createRecord(id, module.exports)
+	  } else {
+	    hotAPI.update(id, module.exports, __vue_template__)
+	  }
+	})()}
+
+/***/ },
+/* 73 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _commonUtil = __webpack_require__(28);
+	
+	var _commonUtil2 = _interopRequireDefault(_commonUtil);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var detailScroll; // <template>
+	//   <div class="detail_container">
+	//     <header class="header">
+	//       <i class="back" onclick="window.history.go(-1)"></i>
+	//       <span class="title">商品详情</span>
+	//     </header>
+	//     <section id="detail-scroll">
+	//       <div class="detail-box">
+	//         <!-- 搭配图例 -->
+	//         <section class="img">
+	//           <img v-bind:src="productUrl" />
+	//         </section>
+	//
+	//
+	//       </div>
+	//     </section>
+	//   </div>
+	// </template>
+	//
+	// <script>
+	exports.default = {
+	  data: function data() {
+	    return {
+	      products: [],
+	      productUrl: '',
+	      productName: '',
+	      productPrice: 0,
+	      prodyctSaleCount: 0,
+	      productType: '',
+	      productCount: 999
+	    };
+	  },
+	  ready: function ready() {
+	    var that = this;
+	    var id = this.$route.params.id;
+	    detailScroll = new IScroll('#detail-scroll', {
+	      probeType: 3,
+	      click: true,
+	      bounce: false,
+	      mouseWheel: true
+	    });
+	
+	    var p1 = this.$http.get('/rest/listrefresh'),
+	        p2 = this.$http.get('/rest/products'),
+	        p3 = this.$http.get('/rest/listmore');
+	    Promise.all([p1, p2, p3]).then(function (responses) {
+	      that.products = responses[0].data.concat(that.products);
+	      that.products = responses[1].data.concat(that.products);
+	      that.products = responses[2].data.concat(that.products);
+	      that.products.forEach(function (item) {
+	        if (item.name == id) {
+	          that.productUrl = item.imgsrc;
+	          that.productName = item.name;
+	          that.productPrice = item.price;
+	          that.prodyctSaleCount = item.saleCount;
+	          that.productType = item.type;
+	          return;
+	        }
+	      });
+	      //刷新 Iscroll 长度
+	      Vue.nextTick(function () {
+	        _commonUtil2.default.isAllLoaded('#detail-scroll', function () {
+	          detailScroll.refresh();
+	        });
+	      });
+	    });
+	  }
+	};
+	// </script>
+
+	/* generated by vue-loader */
+
+/***/ },
+/* 74 */
+/***/ function(module, exports) {
+
+	module.exports = "\n<div class=\"detail_container\">\n  <header class=\"header\">\n    <i class=\"back\" onclick=\"window.history.go(-1)\"></i>\n    <span class=\"title\">商品详情</span>\n  </header>\n  <section id=\"detail-scroll\">\n    <div class=\"detail-box\">\n      <!-- 搭配图例 -->\n      <section class=\"img\">\n        <img v-bind:src=\"productUrl\" />\n      </section>\n\n\n    </div>\n  </section>\n</div>\n";
+
+/***/ },
+/* 75 */
 /***/ function(module, exports) {
 
 	'use strict';

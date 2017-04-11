@@ -13,6 +13,7 @@ import register from "./components/register.vue";
 import find from "./components/find.vue";
 import search from './components/search.vue';
 import detail from './components/detail.vue';
+import productDetail from './components/productDetail.vue';
 
 // 在根组件加入 store，让它的子组件和 store 连接
 import store from './vuex/store';
@@ -65,6 +66,9 @@ router.map({
  },
   '/detail/:id':{
     component: detail,
+ },
+  '/productDetail/:id': {
+    component: productDetail,
   }
 });
 
