@@ -36,12 +36,15 @@
                 <img v-bind:src='list.imgsrc' />
               </div>
               <h4>{{list.name}}</h4>
-              <span>￥{{list.price}}</span>
+              <span>￥{{list.newprice}}</span>
             </li>
           </ul>
           <div v-show='bottomshow' class="foot">
             <img v-bind:src='imgArrow' />
             <span>努力加载中...</span>
+          </div>
+          <div v-show='notice' class="foot">
+            <span>没有符合的数据~</span>
           </div>
         </div>
       </section>
@@ -54,6 +57,7 @@
         data() {
             return {
                 msg: '',
+                type: this.$route.params.type,
                 curIndex: 0,
                 priceClickCount: 0,
                 selectClickCount: 0,
@@ -68,10 +72,10 @@
                 transitionName: 'goto',
                 bottomshow:false,
                 topshow:false,
+                notice: false
             }
         },
         ready: function() {
-
             myScroll = new IScroll('#search_scroll-view', {
                 probeType: 3,
                 mouseWheel: true,
@@ -81,7 +85,6 @@
             that.loadData(that);
             // that.topshow=true;
             // that.bottomshow=true;
-            myScroll.scrollTo(0, -35);
             var head = $('.head img');
             var topImgHasClass = head.hasClass('up');
             var foot = $('.foot img');
@@ -102,14 +105,15 @@
                 if (this.y >= -35 && this.y < 0) {
                     myScroll.scrollTo(0, -35);
                     head.removeClass('up');
-                } else if (this.y >= 0) {
+                } else if (this.y >= 0 && that.topshow) {
                     head.attr('src', '/images/ajax-loader.gif');
 
                     // ajax下拉刷新数据
                     that.$http.get('/rest/listrefresh')
                         .then((res) => {
-                            that.productList = res.data.concat(that.productList);
+                            that.productList = (that.typeLoadDate(that, res.data)).concat(that.productList);
                             that.productbeifen= res.data.concat(that.productbeifen);
+                            that.notice = false;
                             that.judgeState(that);
                             myScroll.scrollTo(0, -35);
                             head.removeClass('up');
@@ -125,14 +129,15 @@
                 if (maxY > -35 && maxY < 0) {
                     myScroll.scrollTo(0, self.maxScrollY + 35);
                     foot.removeClass('down')
-                } else if (maxY >= 0) {
+                } else if (maxY >= 0 && that.bottomshow) {
                     foot.attr('src', '/images/ajax-loader.gif');
                     //ajax上拉加载数据
                     that.$http.get('/rest/listmore')
                         .then((res) => {
-                            that.productList = that.productList.concat(res.data);
+                            that.productList = that.productList.concat(that.typeLoadDate(that, res.data));
                             that.productbeifen = that.productbeifen.concat(res.data);
                             that.judgeState(that);
+                            that.notice = false;
                             foot.removeClass('down');
                             foot.attr('src', '/images/arrow.png');
                             Vue.nextTick(function() {
@@ -146,7 +151,7 @@
         methods: {
             judgeState(that){
               //console.log(that.saleselected);
-              console.log(that.priceSelected);
+              // console.log(that.priceSelected);
               if (that.saleselected) {
                   that.productList.sort(that.sortBySale);
               }
@@ -159,12 +164,30 @@
                   }
               }
             },
+            typeLoadDate(that, data) {
+              let temp = [];
+              if(that.type) {
+                data.forEach((item) => {
+                  if(item.type == that.type) {
+                    temp.push(item);
+                  }
+                });
+              } else {
+                temp = data;
+                that.topshow=true;
+                that.bottomshow=true;
+                myScroll.scrollTo(0, -35);
+              };
+              that.type = null;
+              return temp;
+            },
             loadData(that) {
                 that.$http.get('/rest/products')
                     .then((res) => {
-                        that.topshow=true;
-                        that.bottomshow=true;
-                        that.productList = res.data;
+                        that.productList = that.typeLoadDate(that, res.data);
+                        if(!that.productList.length){
+                          that.notice=true;
+                        }
                         that.productbeifen = res.data;
                         Vue.nextTick(function() {
                             commonUtil.isAllLoaded('#search_scroll-view', function() {
@@ -175,9 +198,10 @@
             },
             searchContent() {
                 let pro = this.productbeifen;
-                let foot = $('.foot');
+                // let foot = $('.foot');
                 // console.log(pro);
                 this.productList = [];
+                // myScroll.scrollTo(0, -35);
                 for (let i = 0; i < pro.length; i++) {
                     let str = pro[i].name;
                     //console.log(this.msg.length);
@@ -188,11 +212,23 @@
                     }
                     //}
                 };
-                if(this.msg == ''){
-                  foot.css('display', 'block');
+                this.notice = false;
+                if(!this.msg){
+                  this.topshow=true;
+                  this.bottomshow = true;
+                  myScroll.scrollTo(0, -35);
                 } else {
-                  foot.css('display', 'none');
+                  this.topshow=false;
+                  this.bottomshow = false;
                 }
+                if(!this.productList.length){
+                  this.notice=true;
+                }
+                Vue.nextTick(function() {
+                    commonUtil.isAllLoaded('#search_scroll-view', function() {
+                        myScroll.refresh();
+                    });
+                });
             },
             //按照价格区间排序
             selectprice() {

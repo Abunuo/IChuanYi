@@ -11,9 +11,10 @@ import shopping from "./components/shopping.vue";
 import login from "./components/login.vue";
 import register from "./components/register.vue";
 import find from "./components/find.vue";
-import search from './components/search.vue';
+import _search from './components/search.vue';
 import detail from './components/detail.vue';
 import productDetail from './components/productDetail.vue';
+import car from './components/car.vue';
 
 // 在根组件加入 store，让它的子组件和 store 连接
 import store from './vuex/store';
@@ -51,22 +52,28 @@ router.map({
         component: shopping
       }
     }
-},
- '/login': {
+  },
+  'car': {
+    component: car,
+  },
+  '/login': {
      component: login,
- },
- '/register': {
+  },
+  '/register': {
    component: register
- },
- '/find': {
+  },
+  '/find': {
    component: find
- },
+  },
   '/search': {
-    component: search,
- },
+   component: _search
+  },
+  '/search/:type': {
+    component: _search,
+  },
   '/detail/:id':{
     component: detail,
- },
+  },
   '/productDetail/:id': {
     component: productDetail,
   }

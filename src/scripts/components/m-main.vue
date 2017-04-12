@@ -6,7 +6,7 @@
                 <a class="hot {{cur == 0 ? 'active':''}}" v-on:click="greet(0)">热点</a>
                 <a class="attention {{cur == 1 ? 'active':''}}" v-on:click="greet(1)">关注</a>
             </nav>
-            <span class="car"></span>
+            <span class="car" v-link="{path: '/car'}"></span>
         </header>
         <div class="swiper-container content htmleaf-container" id="index-swiper">
           <div class="swiper-wrapper ">

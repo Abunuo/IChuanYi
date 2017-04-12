@@ -8,7 +8,7 @@
                     <p class="reloadNotice">下拉刷新 . . .</p>
                 </div>
                 <!-- banner -->
-                <div class="swiper-container" id="banner-swiper">
+                <div class="swiper-container" id="banner-swiper" v-link="{path: '/search'}">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide" v-for="item in bannerList">
                             <img v-bind:src="item"/>
@@ -29,10 +29,10 @@
                 <!-- fashion -->
                 <section class="fashion">
                     <div class="fashion-title"></div>
-                    <img v-bind:src = "item" v-for="item in fashionList"/>
+                    <img v-bind:src = "item" v-for="item in fashionList" v-link="{path: '/search'}"/>
                     <div class="fashion-footer"></div>
                     <div class="fashion-more">
-                        <img v-bind:src = "item" v-for="item in fashionMore"/>
+                        <img v-bind:src = "item" v-for="item in fashionMore" v-link="{path: '/search'}"/>
                     </div>
                 </section>
 
@@ -42,7 +42,7 @@
                     <div class="swiper-container" id="prefect-swiper">
                         <div class="swiper-wrapper" style="width:100%;height:100%;">
                             <div class="swiper-slide" v-for="item in prefectList">
-                                <img v-bind:src="item"/>
+                                <img v-bind:src="item" v-link="{path: '/search'}"/>
                             </div>
                         </div>
                     </div>

@@ -3,6 +3,7 @@
     <header class="header">
       <i class="back" onclick="window.history.go(-1)"></i>
       <span class="title">搭配详情</span>
+      <span class="car" v-link="{path: '/car'}"></span>
     </header>
     <section id="detail-scroll">
       <div class="detail-box">

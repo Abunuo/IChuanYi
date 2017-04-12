@@ -5,21 +5,21 @@
             <em></em>
             <input placeholder='暖心毛衣'  type="text"/>
           </div>
-          <div class='header_right'></div>
+          <div class='header_right' v-link="{path: '/car'}"></div>
       </header>
       <section  id='shopping_scroll-view'>
         <div class="conbox">
           <!-- 团购 -->
           <div class='header_nav'>
             <div class="nav_left">
-              <img src="/images/shop6.jpg"  />
+              <img src="/images/shop6.jpg" v-link="{path: '/search'}"/>
             </div>
             <div class="nav_right">
               <div>
-                <img src="/images/shop7.jpg"  />
+                <img src="/images/shop7.jpg" v-link="{path: '/search'}"/>
               </div>
               <div>
-                <img src="/images/shop8.jpg"  />
+                <img src="/images/shop8.jpg" v-link="{path: '/search'}" />
               </div>
             </div>
           </div>
@@ -42,7 +42,7 @@
             <div id='qianggou_con' class="swiper-container">
               <div class="swiper-wrapper">
                 <div class="swiper-slide" v-for='l in qinggou'>
-                    <dl>
+                    <dl v-link='"/productDetail/" + l.name'>
                       <dt>
                         <img v-bind:src='l.imgsrc'/>
                       </dt>
@@ -62,7 +62,7 @@
                 <h4><img src='/images/bg1.jpg' /></h4>
             </div>
             <div class="bibei_con">
-              <dl v-link="{path:'/search'}" v-for='b in bibei'>
+              <dl v-link='"/search/" + b.name' v-for='b in bibei'>
                   <dt><img v-bind:src='b.imgsrc' /></dt>
                   <dd>{{b.name}}</dd>
               </dl>
@@ -74,7 +74,7 @@
                 <h4><img src='/images/bg2.jpg' /></h4>
             </div>
             <ul class='fenlei_con' >
-              <li>
+              <li  v-link='"/search/上衣"'>
                 <div class="fenlei_left">
                   <h3>上衣</h3>
                   <h4>TOPS</h4>
@@ -83,7 +83,7 @@
                   <img  src='/images/nav1.jpg'/>
                 </div>
               </li>
-              <li>
+              <li v-link='"/search/裤子"'>
                 <div class="fenlei_left">
                   <h3>裤子</h3>
                   <h4>PANTS</h4>
@@ -92,7 +92,7 @@
                   <img  src='/images/nav2.jpg'/>
                 </div>
               </li>
-              <li>
+              <li v-link='"/search/裙装"'>
                 <div class="fenlei_left">
                   <h3>裙装</h3>
                   <h4>DRESSES</h4>
@@ -101,7 +101,7 @@
                   <img  src='/images/nav3.jpg'/>
                 </div>
               </li>
-              <li>
+              <li v-link='"/search/包包"'>
                 <div class="fenlei_left">
                   <h3>包包</h3>
                   <h4>BAGS</h4>
@@ -110,7 +110,7 @@
                   <img  src='/images/nav4.jpg'/>
                 </div>
               </li>
-              <li>
+              <li v-link='"/search/鞋子"'>
                 <div class="fenlei_left">
                   <h3>鞋子</h3>
                   <h4>SHONES</h4>
@@ -119,7 +119,7 @@
                   <img  src='/images/nav5.jpg'/>
                 </div>
               </li>
-              <li>
+              <li v-link='"/search/配饰"'>
                 <div class="fenlei_left">
                   <h3>配饰</h3>
                   <h4>ACCESSORY</h4>

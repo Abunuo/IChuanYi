@@ -21,6 +21,15 @@
           font-size: .18rem;
           line-height: .6rem;
       }
+      .car{
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: .6rem;
+          height: .6rem;
+          background: url('/images/my-shopping-cart-icon_d3a35b8.png')no-repeat center center;
+          background-size: 30px,30px;
+      }
   }
   #detail-scroll {
     @include flex(1);
