@@ -93,10 +93,10 @@ export default {
                 var that = this;
                 setTimeout(function() {
                     that.$route.router.go({
-                        path: "/login"
+                        path: "/my"
                     });
-                }, 4000);
-                $(".ts").html("注册成功！");
+                }, 2000);
+                $(".ts").html("注册成功，正在为您自动登录 ^_^");
                 this.judge();
                 this.change(true,this.phone);
             }
@@ -107,7 +107,7 @@ export default {
             this.flag = false;
             setTimeout(function(){
                 that.show = false;
-            },4000);
+            },2000);
         }
     }
 }

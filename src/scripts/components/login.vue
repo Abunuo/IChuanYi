@@ -40,11 +40,11 @@ import { getStainedx } from '../vuex/getters';
      vuex: {
        actions: {
          change: staChanger
-     },
-     getters: {
+       },
+       getters: {
          getStainedx: getStainedx
-     }
-   },
+       }
+     },
      data(){
          return{
              show: false,
@@ -93,13 +93,13 @@ import { getStainedx } from '../vuex/getters';
 
             //  console.log(this.flag);
              if (this.flag) {
-
                  var that = this;
                  setTimeout(function() {
-                     that.$route.router.go({
-                         path: "/my"
-                     });
-                 }, 4000);
+                    //  that.$route.router.go({
+                    //      path: "/my"
+                    //  });
+                    window.history.go(-1);
+                 }, 2000);
                   $(".ts").html("登录成功！");
                   this.judge();
                   this.change(true,this.user_name);
@@ -111,7 +111,7 @@ import { getStainedx } from '../vuex/getters';
              this.flag = false;
              setTimeout(function(){
                  that.show = false;
-             },4000);
+             },2000);
          }
      },
      ready: function() {

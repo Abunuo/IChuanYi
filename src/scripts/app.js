@@ -23,7 +23,10 @@ let App = Vue.extend({
     store: store
 });
 
-let router = new VueRouter();
+let router = new VueRouter({
+  // hashbang: true, //将路径格式化为#!开头 默认 true
+  // history:true  //启用HTML5 history模式，可以使用pushState和replaceState来管理记录  默认 false
+});
 
 router.map({
   '/': {

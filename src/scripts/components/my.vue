@@ -87,11 +87,10 @@
        methods: {
          loginOut() {
            this.flag = true;
+           this.staChange(false, '');
          }
        },
      ready: function() {
-        //  console.log(this.getStainedx.loginState);
-        //  console.log(this.getStainedx.phone);
          this.phone = this.getStainedx.phone;
          if(this.getStainedx.loginState){
              this.flag = false;

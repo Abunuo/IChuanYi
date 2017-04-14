@@ -1,7 +1,9 @@
 const state = {
   tabIndex: 0,
-  loginState: false,
-  phone: ''
+  // loginState: false,
+  // phone: ''
+  loginState: true,
+  phone: '15712880306'
 }
 
 const mutations = {
