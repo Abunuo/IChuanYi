@@ -1,0 +1,234 @@
+$baseColor: #8a5799;
+.productDetail_container {
+  width: 100%;
+  height: 100%;
+  @include flexbox();
+  @include flex-direction(column);
+  .header{
+      height: .6rem;
+      .back{
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: .6rem;
+          height: .6rem;
+          background: url('/images/back_red.png') no-repeat center center;
+          background-size: .3rem;
+      }
+      span{
+          display: inline-block;
+          width: 100%;
+          text-align: center;
+          font-size: .18rem;
+          line-height: .6rem;
+      }
+      .car{
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: .6rem;
+          height: .6rem;
+          background: url('/images/my-shopping-cart-icon_d3a35b8.png')no-repeat center center;
+          background-size: 30px,30px;
+      }
+  }
+  #productDetail-scroll {
+    @include flex(1);
+    width: 100%;
+    overflow: hidden;
+    .detail-box {
+        width: 100%;
+        height: auto;
+        background: #f3f3f3;
+        .img {
+          position: relative;
+          padding: 0 .35rem;
+          background: #fff;
+          img {
+            width: 100%;
+          }
+          .pagenation {
+            @include border(1px, $baseColor, solid, .2rem);
+            height: .2rem;
+            line-height: .2rem;
+            position: absolute;
+            bottom: .05rem;
+            right: .15rem;
+            padding: 0 .1rem;
+            color: #c79af2;
+            background: #fafafa;
+          }
+        }
+        .productDetail {
+          padding: 0 .15rem;
+          overflow:hidden;
+          background: #fff;
+          .productName {
+            height: .5rem;
+            line-height: .5rem;
+            font-size: .16rem;
+            color: #333;
+          }
+          .productInfo {
+            @include flexbox();
+            @include justify-content(space-between);
+            @include align-items(center);
+            font-size: .12rem;
+            .price {
+              font-size: .20rem;
+            }
+            .originalPrice {
+              color: #ccc;
+              text-decoration: line-through;
+            }
+            .rate {
+              @include border(1px, $baseColor, solid);
+              padding: 0 .1rem;
+              color: $baseColor;
+              margin-left: .1rem
+            }
+            .productSaleCount {
+              font-size: .14rem;
+            }
+          }
+          .productSale {
+            @include flexbox();
+            @include justify-content(space-between);
+            margin: .3rem 0 .05rem 0;
+            font-size: .12rem;
+            color: #999;
+          }
+        }
+        .shopInfo {
+          height: .6rem;
+          margin: .1rem 0;
+          background: #fff;
+          padding: 0 .2rem;
+          @include flexbox();
+          @include justify-content(space-between);
+          @include align-items(center);
+          img {
+            width: .4rem;
+            height: .4rem;
+            margin-right: .2rem;
+            @include border-radius(.5rem);
+          }
+          i {
+            font-size: .16rem;
+            color: #333;
+          }
+          .attention {
+            height: .3rem;
+            line-height: .2rem;
+            padding: .05rem .1rem;
+            color: $baseColor;
+            @include border(1px, $baseColor, solid, .2rem);
+          }
+        }
+        .reception {
+          background: #fff;
+          overflow: hidden;
+          .title {
+            @include flexbox();
+            @include justify-content(space-between);
+            @include align-items(center);
+            background: #fbfbfb;
+            height: .4rem;
+            padding: 0 .15rem;
+            p {
+              @include border(0 0 0 5px, $baseColor, solid);
+              padding-left: .1rem;
+              font-size: .16rem;
+            }
+            span {
+              font-size: .12rem;
+              color: #999;
+            }
+          }
+          .receptionInfo {
+            li {
+              padding: 0 .2rem;
+              color: #555;
+              @include border(1px 0 0 0, #eee, solid);
+              .userInfo {
+                height: .5rem;
+                line-height: .5rem;
+                img {
+                  width: .25rem;
+                  margin-right: .05rem;
+                  @include border-radius(.25rem);
+                }
+              }
+              .receptionContent {
+                padding: 0 0 .2rem .3rem;
+                .content {
+                  margin-bottom: .1rem
+                }
+                .productInfo {
+                  color: #ccc;
+                  font-size: .12rem;
+                }
+              }
+            }
+          }
+
+        }
+    }
+  }
+  .buyBar {
+    @include flexbox();
+    width: 100%;
+    height: .7rem;
+    font-size:.2rem;
+    @include border(1px 0 0 0, #eee, solid);
+    .options {
+      @include flexbox();
+      @include flex(1);
+      @include justify-content(space-around);
+      font-size: .14rem;
+      padding-top: .15rem;
+      .contect {
+        padding-top: .25rem;
+        background: url('/images/contect.png')no-repeat top center;
+        background-size: .25rem .25rem;
+      }
+      .love {
+        padding-top: .25rem;
+        background: url('/images/love-icon.png')no-repeat top center;
+        background-size: .25rem .25rem;
+      }
+      .loveCollect {
+        padding-top: .25rem;
+        background: url('/images/love-icon-collect.png')no-repeat top center;
+        background-size: .25rem .25rem;
+      }
+    }
+    .addCar {
+      padding: 0 .1rem;
+      line-height: .7rem;
+      color: $baseColor;
+      @include border(0 0 0 1px, #eee, solid);
+    }
+    .buy {
+      padding: 0 .2rem;
+      line-height: .7rem;
+      color: #fff;
+      background: $baseColor;
+    }
+  }
+  .notice {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    margin-left: -0.75rem;
+    width: 1.5rem;
+    height: .4rem;
+    text-align: center;
+    line-height: .4rem;
+    background: #c79af2;
+    @include border-radius(.4rem);
+    p {
+      color: #fff;
+    }
+  }
+}
