@@ -1,7 +1,7 @@
 <template>
 <div class="swiper-container" id="banner">
     <div class="swiper-wrapper">
-        <div v-for="path in imgs" class="swiper-slide"><img v-bind:src="path"/></div>
+        <div v-for="path in imgs" class="swiper-slide"><img v-bind:src="path" v-link="{path: '/search'}"/></div>
     </div>
     <div class="swiper-pagination"></div>
 </div>
@@ -10,8 +10,10 @@
 module.exports = ({
     data() {
         return {
-            imgs: ['https://image1.ichuanyi.cn/group1/M00/74/F0/CgAANFdOin0EAAAAAAAAAPSQLPY578.png?imageView2/1/w/640/h/325/q/60',
-                'https://image1.ichuanyi.cn/group3/M00/45/A3/CgAAGlgIdvcEAAAAAAAAAECL7XE874.png'
+            imgs: [
+              '/images/CgAAGlgIdvcEAAAAAAAAAECL7XE874.png',
+              '/images/CgAAGlgIWnEEAAAAAAAAALN9cvY289.jpg',
+              '/images/CgAAGlgIO0YEAAAAAAAAANFqid0320.jpg'
             ]
         }
     },
@@ -23,9 +25,9 @@ module.exports = ({
         var banerSwiper = new Swiper("#banner", {
             pagination: '.swiper-pagination',
             paginationClickable: true,
-            onSlideChangeStart: function() {
-
-            }
+            autoplay: 2000,
+            loop: true,
+            speed:1000,
         });
     },
     methods: {}

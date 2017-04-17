@@ -1,12 +1,12 @@
 <template>
     <div class="community-container">
         <header>
-            <span>社区</span>
+            <span>爱穿衣</span>
         </header>
         <nav class="nav">
             <ul id="swiper-nav">
                 <template v-for="nav in navList">
-                    <li  v-on:click="switchSwiper($index)"  v-bind:class="curIndex == $index ? 'active': ''"><span>{{nav}}</span></li>
+                    <li  v-on:click="switchSwiper($index)"  v-bind:class="curIndex == $index ? 'active': ''" ><span>{{nav}}</span></li>
                 </template>
             </ul>
         </nav>
@@ -14,18 +14,8 @@
             <div class="swiper-container" id="index-swiper">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <section id="index-scroll" class="index-scroll">
+                        <section class="index-scroll index">
                             <Hot></Hot>
-                        </section>
-                    </div>
-                    <div class="swiper-slide">
-                        <section class="index-scroll">
-                            <others></others>
-                        </section>
-                    </div>
-                    <div class="swiper-slide">
-                        <section class="index-scroll">
-                            <others></others>
                         </section>
                     </div>
                     <div class="swiper-slide">
@@ -53,17 +43,16 @@ module.exports = ({
     data: function() {
         return {
             curIndex: 0,
-            navList: ['热门', '搭配师', '穿衣茶话会', '潮流穿搭志']
+            navList: ['穿衣茶话会', '潮流穿搭志']
         }
     },
     ready: function() {
         this.change(2);
         var that = this;
         Vue.nextTick(function() {
-                commonUtil.isAllLoaded('#index-scroll', function() {
+                commonUtil.isAllLoaded('.index', function() {
                     var rolls=document.querySelectorAll('.index-scroll');
                     for (var i = 0; i < rolls.length; i++) {
-                        // console.log(rolls);
                         new IScroll(rolls[i], {
                             probeType: 3,
                             mouseWheel: true,
@@ -74,7 +63,6 @@ module.exports = ({
             mySwiper = new Swiper("#index-swiper", {
                 onSlideChangeStart: function() {
                     that.curIndex = mySwiper.activeIndex;
-                    // console.log(that.curIndex);
                 }
             });
         })
@@ -98,13 +86,16 @@ module.exports = ({
     height: 100%;
     font-size: 16px;
     background: #eee;
+    display: flex;
+    flex-direction: column;
     .com-container {
-        height: 100%;
+        flex: 1;
+        overflow: hidden;
     }
     .swiper-container {
         height: 100%;
     }
-    #index-scroll {
+    .index-scroll {
         height: 100%;
     }
     .nav {

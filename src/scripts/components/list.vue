@@ -21,8 +21,8 @@ module.exports = {
         width: 23%;
     }
     p {
-    width:70%;
-        vertical-align: top;
+        width:70%;
+        vertical-align: middle;
         margin-left: .1rem;
         display: inline-block;
     }
