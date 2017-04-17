@@ -165,7 +165,7 @@
                   }
                 });
                 if(dataFlag) {
-                  item.data.push({name,count:1});
+                  item.data.unshift({name,count:1});
                 }
                 userFlag = false;
               }
@@ -223,11 +223,7 @@
       },
 
       //立即购买
-      bug() {
-        var carArr = JSON.parse(localStorage.getItem("carList")),
-            user = this.getStainedx.phone,
-            carList = [],
-            flag = true;
+      bug(name) {
         if(this.addLocalStorage(name)) {
           this.$route.router.go('/car');
         }
@@ -245,16 +241,12 @@
       let p1 = this.$http.get('/rest/listrefresh'),
           p2 = this.$http.get('/rest/products'),
           p3 = this.$http.get('/rest/listmore'),
-          p4 = this.$http.get('/rest/qianggou'),
-          p5 = this.$http.get('/rest/bibei'),
-          p6 = this.$http.get('/rest/gouwu');
-      Promise.all([p1, p2, p3, p4, p5, p6]).then((responses) => {
+          p4 = this.$http.get('/rest/qianggou');
+      Promise.all([p1, p2, p3, p4]).then((responses) => {
         that.products = responses[0].data.concat(that.products);
         that.products = responses[1].data.concat(that.products);
         that.products = responses[2].data.concat(that.products);
         that.products = responses[3].data.concat(that.products);
-        that.products = responses[4].data.concat(that.products);
-        that.products = responses[5].data.concat(that.products);
         that.products.forEach((item) => {
           if(item.name == id){
             that.productUrl = item.imgsrc;

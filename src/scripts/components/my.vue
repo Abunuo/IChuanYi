@@ -90,18 +90,18 @@
            this.staChange(false, '');
          }
        },
-     ready: function() {
-         this.phone = this.getStainedx.phone;
-         if(this.getStainedx.loginState){
-             this.flag = false;
-         };
-         this.change(3);
-         this.myScroll = new IScroll('#index-scroll', {
-             bounce: false,
-             mouseWheel: true,
-             click:true
-         });
-     }
+       ready: function() {
+           this.phone = this.getStainedx.phone;
+           if(this.getStainedx.loginState){
+               this.flag = false;
+           };
+           this.change(3);
+           this.myScroll = new IScroll('#index-scroll', {
+               bounce: false,
+               mouseWheel: true,
+               click:true
+           });
+       }
    }
 
 

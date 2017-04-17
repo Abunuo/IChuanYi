@@ -6,7 +6,8 @@ module.exports=[
     "newprice":68.0,
     "saleCount":164,
     "oldprice": 500,
-    "type": '配饰'
+    "type": '配饰',
+    shopName: '唐狮'
   },
   {
     'id':'32',
@@ -15,7 +16,8 @@ module.exports=[
     "newprice":195.0,
     "saleCount":866,
     "oldprice": 500,
-    "type": '鞋子'
+    "type": '鞋子',
+    shopName: '唐狮'
   },
   {
     'id':'33',
@@ -24,7 +26,8 @@ module.exports=[
     "newprice":129.0,
     "saleCount":181,
     "oldprice": 500,
-    "type": '针织衫'
+    "type": '针织衫',
+    shopName: '唐狮'
   },
   {
     'id':'34',
@@ -33,6 +36,7 @@ module.exports=[
     "newprice":152.0,
     "saleCount":544,
     "oldprice": 500,
-    "type": '针织衫'
+    "type": '针织衫',
+    shopName: '唐狮'
   }
 ]

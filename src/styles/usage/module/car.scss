@@ -1,3 +1,4 @@
+$priceColor: #d075ea;
 .car_container {
   width: 100%;
   height: 100%;
@@ -5,7 +6,6 @@
   @include flex-direction(column);
   .header{
       height: .6rem;
-      @include border(0 0 1px 0, #eee, solid);
       .back{
           position: absolute;
           left: 0;
@@ -22,5 +22,169 @@
           font-size: .18rem;
           line-height: .6rem;
       }
+      .edit {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: .6rem;
+        height: .6rem;
+        color: #999;
+        font-size: .16rem;
+      }
+      .finish {
+        color: $priceColor;
+      }
+  }
+  #carList_scroll {
+    @include flex(1);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #f5f5f5;
+    .carList {
+      padding-top: .1rem;
+      .select {
+        width: .2rem;
+        height: .2rem;
+        margin-left: .2rem
+      }
+      .shopInfo {
+        height: .5rem;
+        padding-right: .2rem;
+        background: #fff;
+        @include flexbox();
+        @include flex-direction(row);
+        @include align-items(center);
+        @include border(0 0 1px 0, #ddd, solid);
+        div img {
+          width: .3rem;
+          margin-left: .2rem;
+        }
+      }
+      .proInfo {
+        padding: .1rem .2rem .1rem 0;
+        background: #fff;
+        @include flexbox();
+        @include flex-direction(row);
+        @include align-items(center);
+        @include border(0 0 1px 0, #ddd, solid);
+        .pro {
+          width: 100%;
+          padding-left: .2rem;
+          @include flexbox();
+          @include flex-direction(row);
+          img {
+            height: 0.8rem;
+          }
+          >div {
+            width: 100%;
+            font-size: .16rem;
+            margin-left: .1rem;
+            p {
+              @include flexbox();
+              @include justify-content(space-between);
+            }
+            p:nth-of-type(2) {
+              font-size: .12rem;
+              color: #b5a8ac;
+              span {
+                text-decoration: line-through;
+              }
+            }
+            >div {
+              margin-top: .1rem;
+              @include flexbox();
+              @include justify-content(center);
+              span {
+                display: inline-block;
+                width: .4rem;
+                height: .24rem;
+                text-align: center;
+                @include border(1px, #ddd, solid);
+              }
+              .count {
+                width: .5rem;
+                border: none;
+              }
+            }
+          }
+        }
+      }
+      .subtotal {
+        height: .5rem;
+        padding: 0 .2rem;
+        background: #fff;
+        @include flexbox();
+        @include flex-direction(row);
+        @include justify-content(space-between);
+        @include align-items(center);
+        span {
+          color: $priceColor;
+        }
+      }
+    }
+    .carList:nth-of-type(1) {
+      padding-top: 0;
+    }
+    .car-none {
+      padding-top: 1rem;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .toolBar {
+    width: 100%;
+    height: .7rem;
+    font-size:.2rem;
+    padding-left: .1rem;
+    @include flexbox();
+    @include justify-content(space-between);
+    @include border(1px 0 0 0, #eee, solid);
+    .unSelectAll {
+      padding-left: .25rem;
+      line-height: .7rem;
+      color: #666;
+      background: url('/images/circle.png') no-repeat center left;
+      background-size: .2rem .2rem;
+    }
+    .selectAll {
+      padding-left: .25rem;
+      line-height: .7rem;
+      color: #666;
+      background: url('/images/icon-checked.png') no-repeat center left;
+      background-size: .2rem .2rem;
+    }
+    .priceAll {
+      @include flex(1);
+      text-align: right;
+      padding: .1rem .1rem 0 0;
+      .price {
+        font-size: .18rem;
+        color: #666;
+        span {
+          color: $priceColor;
+          margin-left: .1rem;
+        }
+      }
+      .preferential {
+        font-size: .12em;
+        color: #999;
+      }
+    }
+    .buy {
+      width: 1.2rem;
+      text-align: center;
+      color: #fff;
+      line-height: .7rem;
+      background: #7566d8;
+    }
+    .deleteAll {
+      width: 1.2rem;
+      text-align: center;
+      color: #fff;
+      line-height: .7rem;
+      background: #7566d8;
+    }
   }
 }

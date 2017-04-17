@@ -6,7 +6,8 @@ module.exports=[
     "newprice":104.0,
     "saleCount":834,
     "oldprice": 500,
-    "type": '上衣'
+    "type": '上衣',
+    shopName: '唐狮'
   },
   {
     'id':'38',
@@ -15,7 +16,8 @@ module.exports=[
     "newprice":102.0,
     "saleCount":323,
     "oldprice": 500,
-    "type": '上衣'
+    "type": '上衣',
+    shopName: '唐狮'
   },
   {
     'id':'39',
@@ -24,7 +26,8 @@ module.exports=[
     "newprice":111.0,
     "saleCount":677,
     "oldprice": 500,
-    "type": '上衣'
+    "type": '上衣',
+    shopName: '以纯'
   },
   {
     'id':'40',
@@ -32,7 +35,8 @@ module.exports=[
     "name":"VNOOK卫衣韩版",
     "newprice":111.0,
     "saleCount":527,
-    "oldprice": 500, 
-    "type": '上衣'
+    "oldprice": 500,
+    "type": '上衣',
+    shopName: '唐狮'
   }
 ]
