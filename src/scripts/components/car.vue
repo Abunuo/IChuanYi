@@ -18,7 +18,7 @@
                 <span>{{item.shopName}}</span>
               </div>
             </div>
-            <div class="proInfo">
+            <div class="proInfo" v-link='"/productDetail/" + item.name'>
               <img class='select' v-show="!item.checked" src="/images/circle.png" @click="select(item)"/>
               <img class='select' v-show="item.checked" src="/images/icon-checked.png" @click="select(item)"/>
               <div class="pro">
