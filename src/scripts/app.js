@@ -15,6 +15,10 @@ import _search from './components/search.vue';
 import detail from './components/detail.vue';
 import productDetail from './components/productDetail.vue';
 import car from './components/car.vue';
+import order from './components/order.vue';
+import discount from './components/discount.vue';
+import love from './components/love.vue';
+import award from './components/award.vue';
 
 // 在根组件加入 store，让它的子组件和 store 连接
 import store from './vuex/store';
@@ -56,8 +60,24 @@ router.map({
       }
     }
   },
-  'car': {
+  '/car': {
     component: car,
+  },
+  '/order': {
+    component: order
+  },
+  '/order/:id': {
+    name: 'order',
+    component: order
+  },
+  '/discount': {
+    component: discount
+  },
+  '/love': {
+    component: love
+  },
+  '/award': {
+    component: award
   },
   '/login': {
      component: login,

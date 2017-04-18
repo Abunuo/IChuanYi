@@ -16,10 +16,10 @@
               </div>
               <div class="tabs">
                   <ul>
-                      <li>我的喜欢</li>
-                      <li>优惠券</li>
+                      <li v-link="{path: '/love'}">我的喜欢</li>
+                      <li v-link="{path: '/discount'}">优惠券</li>
                       <li>推荐奖励</li>
-                      <li>签到</li>
+                      <li @click="signIn">签到</li>
                   </ul>
               </div>
               <div class="others">
@@ -29,13 +29,13 @@
                   </ul>
               </div>
               <div class="order">
-                  <p>我的订单</p>
+                  <p v-link="{path: '/order'}">我的订单</p>
                   <ul>
-                      <li>代付款</li>
-                      <li>代发货</li>
-                      <li>代收货</li>
-                      <li>代评价</li>
-                      <li>退款\退货</li>
+                      <li v-link="{ name: 'order', params: { id: 1}}">代付款</li>
+                      <li v-link="{ name: 'order', params: { id: 2}}">代发货</li>
+                      <li v-link="{ name: 'order', params: { id: 3}}">代收货</li>
+                      <li v-link="{ name: 'order', params: { id: 4}}">代评价</li>
+                      <li v-link="{ name: 'order', params: { id: 0}}">退款\退货</li>
                   </ul>
               </div>
               <div class="others">
@@ -59,6 +59,7 @@
                       <li>系统设置</li>
                   </ul>
               </div>
+              <p class="notice" v-show="noticeShow" >签到成功</p>
           </div>
       </section>
   </div>
@@ -67,7 +68,8 @@
     import { tabChanger } from '../vuex/actions';
     import { staChanger } from '../vuex/actions';
     import { getStainedx } from '../vuex/getters';
-     export default {
+    var time;
+    export default {
        vuex: {
          actions: {
            change: tabChanger,
@@ -81,13 +83,23 @@
            return{
                phone : '',
                flag : true,
-               myScroll: {}
+               myScroll: {},
+               noticeShow: false
            }
        },
        methods: {
          loginOut() {
            this.flag = true;
            this.staChange(false, '');
+         },
+         signIn() {
+           var that = this
+           clearTimeout(time);
+           this.noticeShow = true;
+           time = setTimeout(function() {
+             that.noticeShow = false;
+             $(".notice").html("已签到");
+           },1500);
          }
        },
        ready: function() {

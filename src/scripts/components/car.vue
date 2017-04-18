@@ -18,13 +18,13 @@
                 <span>{{item.shopName}}</span>
               </div>
             </div>
-            <div class="proInfo" v-link='"/productDetail/" + item.name'>
+            <div class="proInfo">
               <img class='select' v-show="!item.checked" src="/images/circle.png" @click="select(item)"/>
               <img class='select' v-show="item.checked" src="/images/icon-checked.png" @click="select(item)"/>
               <div class="pro">
                 <img v-bind:src="item.imgsrc" />
                 <div>
-                  <p>{{item.name}}<span>￥{{item.newprice}}</span></p>
+                  <p v-link='"/productDetail/" + item.name'>{{item.name}}<span>￥{{item.newprice}}</span></p>
                   <p>款式：冰激凌印花  尺码：M <span>￥{{item.oldprice}}</span></p>
                   <div>
                      <span class="sub" @click="sub(item)">-</span>
@@ -89,19 +89,23 @@
     methods: {
       //初始化数据
       init() {
-        var carArr = JSON.parse(localStorage.getItem("carList"));
         this.user = this.getStainedx.phone;
-        if(carArr){
-          carArr.forEach((item) => {
-            if(item.user == this.user){
-              if(item.data.length != 0 ) {
-                this.carData = item.data;
-                this.search();
-                this.carShow = true;
+        if(!this.user){
+          this.$route.router.go('/login');
+        } else {
+          var carArr = JSON.parse(localStorage.getItem("carList"));
+          if(carArr){
+            carArr.forEach((item) => {
+              if(item.user == this.user){
+                if(item.data.length != 0 ) {
+                  this.carData = item.data;
+                  this.search();
+                  this.carShow = true;
+                }
               }
-            }
-          });
-        };
+            });
+          };
+        }
       },
 
       //添加到 localStorage (数据库)
