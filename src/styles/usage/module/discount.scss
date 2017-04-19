@@ -1,0 +1,138 @@
+$baseColor: #d075ea;
+.discount_container {
+  width: 100%;
+  height: 100%;
+  @include flexbox();
+  @include flex-direction(column);
+  header{
+      height: .6rem;
+      @include border(0 0 1px 0, #eee, solid);
+      .back{
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: .6rem;
+          height: .6rem;
+          background: url('/images/back_red.png') no-repeat center center;
+          background-size: .3rem;
+      }
+      span{
+          display: inline-block;
+          width: 100%;
+          text-align: center;
+          font-size: .18rem;
+          line-height: .6rem;
+      }
+      .car{
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: .6rem;
+          height: .6rem;
+          background: url('/images/my-shopping-cart-icon_d3a35b8.png')no-repeat center center;
+          background-size: 30px,30px;
+      }
+  }
+  >nav {
+    height: .4rem;
+    line-height: .4rem;
+    @include flexbox();
+    @include flex-direction(row);
+    @include justify-content(space-around);
+    span {
+      padding: 0 .1rem;
+      color: #999;
+    }
+    .active {
+      color: $baseColor;
+      @include border(0 0 .05rem 0, $baseColor, solid);
+    }
+  }
+  #index-swiper {
+    @include flex(1);
+    width: 100%;
+    background: #f5f5f5;
+    .swiper-slide {
+      .show {
+        li {
+          list-style: none;
+          margin: .1rem;
+          @include flexbox();
+          @include flex-direction(row);
+          .price_container {
+            width: .9rem;
+            height: .7rem;
+            color: #fff;
+            font-size: .12rem;
+            background: #cdcdcd;
+            padding-top: .05rem;
+            text-align: center;
+            vertical-align: top;
+            @include flexbox();
+            @include flex-direction(column);
+            @include border(0, #ddd, solid, .1rem);
+            .price {
+              font-size: .26rem;
+            }
+          }
+          .info {
+            @include flex(1);
+            @include flexbox();
+            @include flex-direction(column);
+            @include border(0, #ddd, solid, .1rem);
+            color: #999;
+            font-size: .1rem;
+            background: #fff;
+            padding: .15rem .1rem .15rem .2rem;
+            overflow: hidden;
+            position: relative;
+            .discountInfo {
+              @include flexbox();
+              p {
+                font-size: .16rem;
+              }
+              p:nth-of-type(1) {
+                display: inline-block;
+                width: .7rem;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+              }
+            }
+            .detail {
+              @include flexbox();
+              @include justify-content(space-between);
+            }
+            .timeOut {
+              width: .5rem;
+              height: .5rem;
+              position: absolute;
+              top: -.05rem;
+              right: -.05rem;
+              background: url('/images/outTime.png') no-repeat;
+              background-size: .5rem .5rem;
+            }
+          }
+        }
+        >p {
+          font-size: .12rem;
+          color: #999;
+          text-align: center;
+        }
+      }
+    }
+  }
+  .none {
+    padding-top: 1rem;
+    @include flexbox();
+    @include flex-direction(column);
+    img {
+      width: 1rem;
+      margin: .2rem auto;
+    }
+    span {
+      color: #aaa;
+      text-align: center;
+    }
+  }
+}

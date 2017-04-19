@@ -1,0 +1,125 @@
+$baseColor: #d075ea;
+.award_container {
+  width: 100%;
+  height: 100%;
+  @include flexbox();
+  @include flex-direction(column);
+  header{
+      height: .6rem;
+      @include border(0 0 1px 0, #eee, solid);
+      .back{
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: .6rem;
+          height: .6rem;
+          background: url('/images/back_red.png') no-repeat center center;
+          background-size: .3rem;
+      }
+      span{
+          display: inline-block;
+          width: 100%;
+          text-align: center;
+          font-size: .18rem;
+          line-height: .6rem;
+      }
+      .car{
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: .6rem;
+          height: .6rem;
+          background: url('/images/my-shopping-cart-icon_d3a35b8.png')no-repeat center center;
+          background-size: 30px,30px;
+      }
+  }
+  .content {
+    @include flex(1);
+    width: 100%;
+    background: #f5f5f5;
+    .confirm {
+      @include flexbox();
+      @include flex-direction(column);
+      @include align-items(center);
+      img{
+        width: 1.5rem;
+        margin: .5rem 0 .2rem;
+      }
+      p {
+        text-align: center;
+        font-size: .16rem;
+      }
+      .phone {
+        height: .3rem;
+      }
+      .notice {
+        font-size: .12rem;
+        color: #999;
+      }
+      .edit_c {
+        width: 90%;
+        height: .4rem;
+        line-height: .4rem;
+        color: #fff;
+        background: #c79af2;
+        margin-top: .3rem;
+      }
+
+    }
+  }
+  .edit {
+    @include flex(1);
+    width: 100%;
+    padding: 0 .2rem;
+    >div {
+      .phone{
+          padding-top: .20rem;
+          display: flex;
+          align-items: center;
+          span{
+              background: #f5f5f5 url(/images/reg_phone_icon.png) no-repeat center center;
+              background-size: .14rem;
+              width: .40rem;
+              height: .36rem;
+              border-right: dashed .01rem #eee;
+          }
+          input{
+              flex: 1;
+          }
+      }
+      .code{
+          padding-top: .14rem;
+          display: flex;
+          align-items: center;
+          span{
+              background: #f5f5f5 url(/images/reg_email_icon.png) no-repeat center center;
+              background-size: .14rem;
+              width: .40rem;
+              height: .36rem;
+              border-right: dashed .01rem #eee;
+          }
+          input{
+              flex: 1;
+          }
+          i{
+              background: #c79af2;
+              height: .36rem;
+              line-height: .36rem;
+              font-size: .12rem;
+              color: #fff;
+              padding: 0 .1rem;
+          }
+      }
+      .submit{
+          width: 100%;
+          height: .4rem;
+          line-height: .4rem;
+          text-align: center;
+          color: #fff;
+          font-size: .16rem;
+          background: #c79af2;
+          margin-top: .2rem;
+      }
+    }
+  }
+}
