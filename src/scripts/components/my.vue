@@ -18,14 +18,13 @@
                   <ul>
                       <li v-link="{path: '/love'}">我的喜欢</li>
                       <li v-link="{path: '/discount'}">优惠券</li>
-                      <li>推荐奖励</li>
+                      <li v-link="{path: '/award'}">推荐奖励</li>
                       <li @click="signIn">签到</li>
                   </ul>
               </div>
               <div class="others">
                   <ul>
-                      <li>联系卖家</li>
-                      <li>消息中心</li>
+                      <li v-link="{path: '/footmark'}">我的足迹</li>
                   </ul>
               </div>
               <div class="order">
@@ -40,8 +39,15 @@
               </div>
               <div class="others">
                   <ul>
-                      <li>常见问题</li>
-                      <li>在线问题</li>
+                      <li>联系卖家</li>
+                      <li>消息中心</li>
+                      <li class="bd" v-show="flag">绑定手机<span>请绑定手机号</span></li>
+                      <li class="bd" v-show="!flag" v-link="{ path: '/phoneEdit'}">绑定手机<span v-bind:style="{color:'#f4f'}">{{phone}}</span></li>
+                      <li v-link='{path: "/address"}'>编辑收货地址</li>
+                  </ul>
+              </div>
+              <div class="others">
+                  <ul>
                       <li class="kf">
                           客服电话
                         <span>
@@ -49,14 +55,8 @@
                             <i>( 周一到周日 09:00-21:00 )</i>
                         </span>
                       </li>
-                  </ul>
-              </div>
-              <div class="others">
-                  <ul>
-                      <li class="bd" v-show="flag">绑定手机<span>请绑定手机号</span></li>
-                      <li class="bd" v-show="!flag">绑定手机<span v-bind:style="{color:'#f4f'}">{{phone}}</span></li>
-                      <li>收货地址</li>
-                      <li>系统设置</li>
+                      <li v-link="{path: '/questions'}">常见问题</li>
+                      <li v-link="{path: '/questionsOnline'}">在线问题</li>
                   </ul>
               </div>
               <p class="notice" v-show="noticeShow" >签到成功</p>

@@ -18,7 +18,12 @@ import car from './components/car.vue';
 import order from './components/order.vue';
 import discount from './components/discount.vue';
 import love from './components/love.vue';
+import phoneEdit from './components/phoneEdit.vue';
+import address from './components/address.vue';
 import award from './components/award.vue';
+import footMark from './components/footmark.vue';
+import questions from './components/questions.vue';
+import questionsOnline from './components/questions_online.vue';
 
 // 在根组件加入 store，让它的子组件和 store 连接
 import store from './vuex/store';
@@ -76,8 +81,23 @@ router.map({
   '/love': {
     component: love
   },
-  '/award': {
+  '/phoneEdit': {
+    component: phoneEdit
+  },
+  '/address': {
+    component: address
+  },
+  'award': {
     component: award
+  },
+  'footmark': {
+    component: footMark
+  },
+  'questions': {
+    component: questions
+  },
+  'questionsOnline': {
+    component: questionsOnline
   },
   '/login': {
      component: login,
