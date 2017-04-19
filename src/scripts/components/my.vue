@@ -22,11 +22,6 @@
                       <li @click="signIn">签到</li>
                   </ul>
               </div>
-              <div class="others">
-                  <ul>
-                      <li v-link="{path: '/footmark'}">我的足迹</li>
-                  </ul>
-              </div>
               <div class="order">
                   <p v-link="{path: '/order'}">我的订单</p>
                   <ul>
@@ -39,8 +34,13 @@
               </div>
               <div class="others">
                   <ul>
-                      <li>联系卖家</li>
-                      <li>消息中心</li>
+                      <li v-link="{path: '/footmark'}">我的足迹</li>
+                      <li v-link="{path: '/love'}">我的收藏</li>
+                      <li v-link="{path: '/discount'}">我的卡包</li>
+                  </ul>
+              </div>
+              <div class="others">
+                  <ul>
                       <li class="bd" v-show="flag">绑定手机<span>请绑定手机号</span></li>
                       <li class="bd" v-show="!flag" v-link="{ path: '/phoneEdit'}">绑定手机<span v-bind:style="{color:'#f4f'}">{{phone}}</span></li>
                       <li v-link='{path: "/address"}'>编辑收货地址</li>
