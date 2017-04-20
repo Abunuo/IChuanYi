@@ -36,7 +36,7 @@
                 <img v-bind:src='list.imgsrc' />
               </div>
               <h4>{{list.name}}</h4>
-              <span>￥{{list.newprice}}</span>
+              <span>￥{{list.newprice}}<i>{{list.saleCount>=10000 ? (list.saleCount/10000).toFixed(2) + "万" : list.saleCount}}人付款</i></span>
             </li>
           </ul>
           <div v-show='bottomshow' class="foot">
@@ -265,15 +265,15 @@
             },
             //升序排序规则
             sortbypriceAscending(a, b) {
-                return a.price - b.price;
+                return a.newprice - b.newprice;
             },
             //降序排序规则
             sortbypriceReduce(a, b) {
-                return b.price - a.price;
+                return b.newprice - a.newprice;
             },
             //按照销量排序规则
             sortBySale(a, b) {
-                return a.saleCount - b.saleCount;
+                return b.saleCount - a.saleCount;
             },
             //销售
             saleCount(event) {
@@ -284,7 +284,7 @@
                 targetName.className = 'liactive';
                 this.productList.sort(this.sortBySale);
                 this.saleselected = true;
-                console.log(this.saleselected);
+                // console.log(this.saleselected);
             },
             //价格
             price(event) {

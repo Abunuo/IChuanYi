@@ -230,8 +230,19 @@
                     }
 
                     span {
+                        @include flexbox();
+                        @include justify-content(space-between);
+                        height: .21rem;
                         font-size: 0.14rem;
                         font-weight: bold;
+                        padding-right: .15rem;
+                        vertical-align: bottom;
+                        i {
+                          color: #999;
+                          font-size:.12rem;
+                          line-height: .21rem;
+                          font-weight: normal;
+                        }
                     }
                 }
             }
