@@ -236,10 +236,17 @@
                 pro.sort(this.sortbypriceReduce);
                 this.productList = [];
                 for (let i = 0.; i < pro.length; i++) {
-                    if (pro[i].price >= this.startprice && pro[i].price < this.endprice) {
+                    if (pro[i].newprice >= this.startprice && pro[i].newprice < this.endprice) {
                         this.productList.push(pro[i]);
                     }
-                }
+                };
+                Vue.nextTick(function() {
+                    commonUtil.isAllLoaded('#search_scroll-view', function() {
+                        myScroll.refresh();
+                    });
+                });
+                this.topshow=false;
+                this.bottomshow = false;
             },
             init(parent) {
                 this.saleselected = false;
