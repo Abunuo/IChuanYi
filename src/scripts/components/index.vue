@@ -39,6 +39,6 @@
               transitionName: 'fade'
           }
       },
-      
+
 }
 </script>

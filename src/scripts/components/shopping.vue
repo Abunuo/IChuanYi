@@ -202,6 +202,7 @@ import { tabChanger } from '../vuex/actions';
         ready: function() {
             this.change(1);
              scroll = new IScroll('#shopping_scroll-view', {
+                probeType: 3,
                 click:true,
                 bounce:false,
                 mouseWheel: true

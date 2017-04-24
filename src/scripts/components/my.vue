@@ -109,6 +109,7 @@
            };
            this.change(3);
            this.myScroll = new IScroll('#index-scroll', {
+               probeType: 3,
                bounce: false,
                mouseWheel: true,
                click:true
