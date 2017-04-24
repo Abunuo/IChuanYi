@@ -40,9 +40,11 @@
           </label>
           <label class="adress" for="adress">
             <span>所在地区：</span>
-            <input class="short input" name='adress' v-model="tempInfo.address.province" type="text"/>
-            <input class="short input" name='adress' v-model="tempInfo.address.country" type="text"/>
-            <input class="short input" name='adress' v-model="tempInfo.address.region" type="text"/>
+            <div class="only">
+              <input class="short" name='adress' v-model="tempInfo.address.province" type="text"/>
+              <input class="short" name='adress' v-model="tempInfo.address.country" type="text"/>
+              <input class="short" name='adress' v-model="tempInfo.address.region" type="text"/>
+            </div>
           </label>
           <label class="detail" for="detail">
             <span>详细地址：</span>
