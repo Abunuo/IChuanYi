@@ -1,10 +1,10 @@
 <template>
   <div class="container">
       <swiper></swiper>
-      <template v-for="content in lists">
-        <block v-if="content.type=='block'"  :info="content"></block>
-        <list v-if="content.type=='list'"  :info="content"></list>
-      </template>
+      <div v-for="content in lists">
+        <block v-if="content.type == 'block'"  v-bind:info="content"></block>
+        <list v-if="content.type == 'list'"  v-bind:info="content"></list>
+      </div>
   </div>
 </template>
 <script>
@@ -14,7 +14,7 @@ import block from './block.vue';
 module.exports = ({
     data() {
         return {
-            lists: [, {
+            lists: [{
                 type: "list",
                 title: "最新推荐 | 时尚女王范",
                 src: "/images/sh13.jpg"

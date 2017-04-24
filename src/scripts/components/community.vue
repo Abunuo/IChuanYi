@@ -15,7 +15,7 @@
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <section class="index-scroll index">
-                            <Hot></Hot>
+                            <hot></hot>
                         </section>
                     </div>
                     <div class="swiper-slide">
@@ -32,7 +32,7 @@
 import { tabChanger } from '../vuex/actions';
 var mySwiper;
 import commonUtil from '../utils/common.util.js';
-import Hot from './Hot.vue';
+import hot from './hot.vue';
 import others from './community-others.vue';
 module.exports = ({
     vuex: {
@@ -68,7 +68,7 @@ module.exports = ({
         })
     },
     components: {
-        Hot,
+        hot,
         others
     },
     methods: {

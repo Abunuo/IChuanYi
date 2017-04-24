@@ -1,6 +1,6 @@
 <template>
 <div class="block-container">
-    <img :src="info.src" />
+    <img v-bind:src="info.src" />
     <p class="detail">
         {{info.title}}
     </p>

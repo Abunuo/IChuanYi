@@ -1,6 +1,6 @@
 <template>
   <div class="list-container">
-      <img :src='info.src'}} />
+      <img v-bind:src='info.src'}} />
       <p>{{info.title}}</p>
   </div>
 </template>
