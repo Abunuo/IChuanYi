@@ -208,6 +208,10 @@
       sub(item) {
         if(item.count > 1) {
           item.count--;
+          if(item.checked){
+            this.count(item);
+            this.countPrice();
+          };
           this.carData.forEach((list, index) => {
             if(item.name == list.name){
               list.count --;
@@ -219,6 +223,10 @@
       add(item) {
         if(item.count < 10 ) {
           item.count++;
+          if(item.checked){
+            this.count(item);
+            this.countPrice();
+          };
           this.carData.forEach((list, index) => {
             if(item.name == list.name){
               list.count ++;
