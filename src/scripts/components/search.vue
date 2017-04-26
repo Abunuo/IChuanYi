@@ -148,6 +148,7 @@
                 }
             });
         },
+        computed: {}, //计算属性
         methods: {
             judgeState(that){
               //console.log(that.saleselected);
