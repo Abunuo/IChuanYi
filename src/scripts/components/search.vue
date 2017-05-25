@@ -66,6 +66,7 @@
                 startprice: 0,
                 endprice: 999,
                 productbeifen: [],
+                productbeifen1: [],
                 imgArrow: '/images/arrow.png',
                 saleselected: false,
                 priceSelected: false,
@@ -113,6 +114,7 @@
                         .then((res) => {
                             that.productList = (that.typeLoadDate(that, res.data)).concat(that.productList);
                             that.productbeifen= res.data.concat(that.productbeifen);
+                            that.productbeifen1= res.data.concat(that.productbeifen1);
                             that.notice = false;
                             that.judgeState(that);
                             myScroll.scrollTo(0, -35);
@@ -136,6 +138,7 @@
                         .then((res) => {
                             that.productList = that.productList.concat(that.typeLoadDate(that, res.data));
                             that.productbeifen = that.productbeifen.concat(res.data);
+                            that.productbeifen1 = that.productbeifen1.concat(res.data);
                             that.judgeState(that);
                             that.notice = false;
                             foot.removeClass('down');
@@ -190,6 +193,7 @@
                           that.notice=true;
                         }
                         that.productbeifen = res.data;
+                        that.productbeifen1 = res.data;
                         Vue.nextTick(function() {
                             commonUtil.isAllLoaded('#search_scroll-view', function() {
                                 myScroll.refresh();
@@ -198,10 +202,11 @@
                     });
             },
             searchContent() {
-                let pro = this.productbeifen;
+                let pro = this.productbeifen1;
                 // let foot = $('.foot');
                 // console.log(pro);
                 this.productList = [];
+                this.productbeifen1 = [];
                 // myScroll.scrollTo(0, -35);
                 for (let i = 0; i < pro.length; i++) {
                     let str = pro[i].name;
@@ -209,7 +214,10 @@
                     //for (let j = 0; j < this.msg.length; j++) {
                     //console.log(this.msg[j]);
                     if (str.indexOf(this.msg) != -1) {
-                        this.productList.push(pro[i]);
+                      this.productbeifen1.push(pro[i]);
+                      if (pro[i].newprice >= this.startprice && pro[i].newprice < this.endprice) {
+                          this.productList.push(pro[i]);
+                      }
                     }
                     //}
                 };
@@ -218,6 +226,7 @@
                   this.topshow=true;
                   this.bottomshow = true;
                   myScroll.scrollTo(0, -35);
+                  this.loadData(this);
                 } else {
                   this.topshow=false;
                   this.bottomshow = false;
@@ -233,7 +242,7 @@
             },
             //按照价格区间排序
             selectprice() {
-                let pro = this.productbeifen;
+                let pro = this.productbeifen1;
                 pro.sort(this.sortbypriceReduce);
                 this.productList = [];
                 for (let i = 0; i < pro.length; i++) {
