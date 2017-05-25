@@ -233,13 +233,18 @@
             },
             //按照价格区间排序
             selectprice() {
-                let pro = this.productList;
+                let pro = this.productbeifen;
                 pro.sort(this.sortbypriceReduce);
                 this.productList = [];
-                for (let i = 0.; i < pro.length; i++) {
+                for (let i = 0; i < pro.length; i++) {
                     if (pro[i].newprice >= this.startprice && pro[i].newprice < this.endprice) {
                         this.productList.push(pro[i]);
                     }
+                };
+                if(this.productList.length == 0) {
+                  this.notice=true;
+                } else {
+                  this.notice=false;
                 };
                 Vue.nextTick(function() {
                     commonUtil.isAllLoaded('#search_scroll-view', function() {
