@@ -49,6 +49,7 @@
             <p>商品评价</p>
             <span>共{{productSaleCount}}评价，好评率{{productReception}}%</span>
           </div>
+          <div class="tempTitle"></div>
           <ul class="receptionInfo">
             <li v-for="list in receptions">
               <div class="userInfo">
@@ -215,6 +216,7 @@
       var that = this;
       var id = this.$route.params.id;
       var title = $('.reception .title');
+      var tempTitle = $('.reception .tempTitle');
       detailScroll = new IScroll('#productDetail-scroll', {
           probeType: 3,
           click:true,
@@ -228,8 +230,10 @@
             title.css('left', '0');
             title.css('opacity', '1');
             title.css('zIndex', '999');
+            tempTitle.css('display', 'block');
           } else {
-            title.css('position', '')
+            title.css('position', '');
+            tempTitle.css('display', 'none');
           }
       });
       let p1 = this.$http.get('/rest/listrefresh'),
