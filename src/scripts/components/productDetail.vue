@@ -214,11 +214,23 @@
     ready() {
       var that = this;
       var id = this.$route.params.id;
+      var title = $('.reception .title');
       detailScroll = new IScroll('#productDetail-scroll', {
           probeType: 3,
           click:true,
           bounce:false,
           mouseWheel: true,
+      });
+      detailScroll.on('scroll', function() {
+          if(this.y <= -557){
+            title.css('position', 'fixed');
+            title.css('top', -this.y);
+            title.css('left', '0');
+            title.css('opacity', '1');
+            title.css('zIndex', '999');
+          } else {
+            title.css('position', '')
+          }
       });
       let p1 = this.$http.get('/rest/listrefresh'),
           p2 = this.$http.get('/rest/products'),
