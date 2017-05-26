@@ -115,25 +115,7 @@
           noticeShow: false
         },
         notice: '',
-        receptions: [
-          {
-            userHead: '/images/sh6.jpg',
-            name: 'wuli小妹',
-            content: '宝贝收到了，包装严实，高端；衣服手感也可以哈哈，好评美美哒。',
-            productInfo: {
-              color: '冰激凌印花',
-              size: 'S'
-            }
-          },{
-            userHead: '/images/sh7.jpg',
-            name: 'Monologue',
-            content: '物流给力，客服很细心的介绍；衣服很舒服，价钱很合理，好评。',
-            productInfo: {
-              color: '巧克力雪花',
-              size: 'M'
-            }
-          }
-        ]
+        receptions: []
       }
     },
     methods: {
@@ -241,12 +223,14 @@
       let p1 = this.$http.get('/rest/listrefresh'),
           p2 = this.$http.get('/rest/products'),
           p3 = this.$http.get('/rest/listmore'),
-          p4 = this.$http.get('/rest/qianggou');
-      Promise.all([p1, p2, p3, p4]).then((responses) => {
+          p4 = this.$http.get('/rest/qianggou'),
+          p5 = this.$http.get('/rest/receptions');
+      Promise.all([p1, p2, p3, p4, p5]).then((responses) => {
         that.products = responses[0].data.concat(that.products);
         that.products = responses[1].data.concat(that.products);
         that.products = responses[2].data.concat(that.products);
         that.products = responses[3].data.concat(that.products);
+        that.receptions = responses[4].data;
         that.products.forEach((item) => {
           if(item.name == id){
             that.productUrl = item.imgsrc;

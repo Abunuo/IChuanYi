@@ -5,6 +5,7 @@ var products=require('./products.js');
 var qianggou=require('./qianggou.js');
 var listrefresh=require('./productMore.js');
 var listmore=require('./productRefresh.js');
+var receptions=require('./receptions.js');
 
 module.exports = function() {
     return {
@@ -14,6 +15,7 @@ module.exports = function() {
         'products':products,
         'qianggou':qianggou,
         'listrefresh':listrefresh,
-        'listmore':listmore
+        'listmore':listmore,
+        'receptions':receptions
     }
 }
