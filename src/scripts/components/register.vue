@@ -1,7 +1,7 @@
 <template>
     <div class="register-container">
         <header>
-            <i class="back" onclick="window.history.go(-1)"></i>
+            <i class="back" v-link="{path: '/'}"></i>
             <span>注册</span>
         </header>
         <section id="main">
