@@ -86,17 +86,17 @@ $baseColor: #d075ea;
           background-size: .3rem .3rem;
         }
       }
-      .add {
-        width: 25%;
-        height: .4rem;
-        line-height: .4rem;
-        background: #7566d8;
-        color: #fff;
-        font-size: .16rem;
-        text-align: center;
-        margin: 0 auto ;
-        @include border(0, #fff, solid, .5rem);
-      }
+    }
+    .add {
+      width: 25%;
+      height: .4rem;
+      line-height: .4rem;
+      background: #7566d8;
+      color: #fff;
+      font-size: .16rem;
+      text-align: center;
+      margin: 0 auto ;
+      @include border(0, #fff, solid, .5rem);
     }
     .edit {
       .content {

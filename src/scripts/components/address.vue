@@ -60,8 +60,11 @@
           <p class="submit" @click="submit(tempInfo.id)">提交</p>
         </div>
       </section>
-      <section class="none" v-show="!addressShow">
-
+      <section class="none" v-show="!addressShow && !editShow">
+        <p style="width:100%; text-align: center; font-size:18px; color:#999; margin-top:40px; margin-bottom:30px;">
+          你还没有收货地址，请编辑添加~
+        </p>
+        <p class="add" @click="add">添加</p>
       </section>
     </section>
   </div>
@@ -85,42 +88,7 @@
           },
           default: 0
         },
-        addressList: [
-          {
-            id: 1,
-            name: '梁明庆',
-            phone: '15712880306',
-            address: {
-              province: '北京市',
-              country: '北京市',
-              region: '朝阳区',
-              detail: '酒仙桥中路24号院4号楼'
-            },
-            default: 1
-          }, {
-            id: 2,
-            name: '梁明庆',
-            phone: '15712880306',
-            address: {
-              province: '山东省',
-              country: '聊城市',
-              region: '冠县',
-              detail: '冠县武训高中'
-            },
-            default: 0
-          }, {
-            id: 3,
-            name: '梁明庆',
-            phone: '18753377276',
-            address: {
-              province: '山东省',
-              country: '淄博市',
-              region: '张店区',
-              detail: '山东理工大学'
-            },
-            default: 0
-          }
-        ]
+        addressList: []
       }
     },
     methods: {
@@ -162,6 +130,7 @@
             this.changeDefault(this.tempInfo.id);
           }
           this.editShow = false;
+          this.addressShow = true;
         }
       },
       changeCheck(temp) {
@@ -184,9 +153,14 @@
       }
     },
     ready() {
-      if(this.addressList.length != 0) {
-        this.addressShow = true;
-      }
+      var that = this;
+      this.$http.get('/rest/adress')
+          .then((responses) => {
+              if(responses.data){
+                that.addressList = responses.data;
+                that.addressShow = true;
+              }
+            });
     }
   }
 </script>
