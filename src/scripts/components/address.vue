@@ -71,7 +71,13 @@
 </template>
 
 <script>
+  import { getStainedx } from '../vuex/getters';
   export default {
+    vuex: {
+      getters: {
+          getStainedx: getStainedx
+      }
+    },
     data() {
       return {
         addressShow: false,
@@ -154,11 +160,16 @@
     },
     ready() {
       var that = this;
+      var user = this.getStainedx.phone;
       this.$http.get('/rest/adress')
           .then((responses) => {
               if(responses.data){
-                that.addressList = responses.data;
-                that.addressShow = true;
+                responses.data.forEach((item) =>{
+                  if(item.user == user){
+                    that.addressList = item.data;
+                    that.addressShow = true;
+                  }
+                })
               }
             });
     }
