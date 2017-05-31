@@ -53,7 +53,7 @@
         this.edit = true;
       },
       confirm() {
-        let flag = false, flag1 = false;
+        let flag = false;
         var userArr = JSON.parse(localStorage.getItem("user"));
         var carList = JSON.parse(localStorage.getItem("carList"));
         userArr.forEach((item) => {
@@ -63,14 +63,13 @@
             return;
           }
         });
-        carList.forEach((item) => {
-          if(item.user == this.phone) {
-            item.user = this.phoneNew;
-            flag1 = true;
-            return;
-          }
-        });
-        if(flag && flag1){
+        if(flag){
+          carList.forEach((item) => {
+            if(item.user == this.phone) {
+              item.user = this.phoneNew;
+              return;
+            }
+          });
           localStorage.setItem("user", JSON.stringify(userArr));
           localStorage.setItem("carList", JSON.stringify(carList));
           this.$route.router.go('/login');
