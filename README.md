@@ -14,5 +14,5 @@ git clone https://github.com/Abunuo/IChuanYi.git
 ```
 npm install  //安装依赖包
 npm run start   //运行项目
-npm run mockJs  //打开假数据服务
+npm run mockJs  //打开 Mock 数据服务
 ```
