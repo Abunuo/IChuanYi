@@ -1,5 +1,5 @@
 # IChuanYi
-穿衣助手 WebApp（VueJs demo）
+穿衣助手 WebApp（VueJs1.0 demo）
 
 > ### 项目简介： 
     穿衣助手的 WebApp 版设计
